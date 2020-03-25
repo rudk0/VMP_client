@@ -1,0 +1,40 @@
+@import "../../colors.scss";
+
+.auth{
+  &-container {
+    padding: 15px;
+    margin: auto;
+    width:400px;
+    border-radius: 20px;
+    background: $dark-purple;
+    opacity: 0.8;
+    box-shadow: 0 0 10px rgba(0,0,0,0.7);
+  }
+  &-label{
+    color: aliceblue;
+    font-weight: bold;
+    opacity: inherit;
+  }
+  &-form{
+    display: block;
+    margin: 15px;
+    border: 2px solid $purple;
+    border-radius: 4px;
+    width: 85%;
+    padding: 7px;
+  }
+  &-form-label{
+    display: flex;
+    color: aliceblue;
+    margin-left: 14px;
+    margin-bottom: -5px;
+  }
+  &-login-btn{
+    padding: 7px;
+    color: aliceblue;
+    border: 2px solid $purple;
+    border-radius: 6px;
+    background: $purple;
+    font-weight: bold;
+  }
+}

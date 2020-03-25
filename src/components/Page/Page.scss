@@ -1,0 +1,10 @@
+@import "../../colors.scss";
+
+.page{
+  &-container{
+    background: $purple;
+    height: 900px;
+    width: 100%;
+    display:flex;
+  }
+}

@@ -1,0 +1,9 @@
+@import "../../colors.scss";
+
+.header {
+  &-container {
+    height: 80px;
+    width: 100%;
+    background: $dark-purple;
+  }
+}
