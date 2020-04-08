@@ -2,8 +2,33 @@
 
 .header {
   &-container {
-    height: 80px;
+    height: 65px;
     width: 100%;
-    background: $dark-purple;
+    background: #181818;
+    opacity: 0.9;
+    display: flex;
+
+  }
+  &-label{
+    color: aliceblue;
+     margin: auto;
+    //margin-right: 450px;
+     opacity: 0.8;
+    //font-weight: bold;
+  }
+  &-btn{
+    padding: 10px;
+    max-height:50px;
+    background: $aqua;
+    color: aliceblue;
+    font-weight: bold;
+    border: 2px solid $aqua;
+    border-radius: 5px;
+    margin: 15px;
+  }
+  &-login{
+    margin: 25px;
+    color: aliceblue;
+    font-weight: bold;
   }
 }

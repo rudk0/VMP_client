@@ -6,12 +6,14 @@ import './Auth.scss';
 const authCN = cn('auth');
 export  const Auth = () =>{
     return (<div className={authCN('container')}>
-        <h1 className={authCN('label')}>Авторизация</h1>
-        <label htmlFor="uname" className={authCN('form-label')}><b>Логин</b></label>
-        <input type="text" name="login" placeholder="Введите логин" className={authCN('form')}></input>
-        <label htmlFor="password"className={authCN('form-label')}><b>Пароль</b></label>
-        <input type="password" name="password" placeholder="Введите пароль" className={authCN('form')}></input>
-        <button type="submit" className={authCN('login-btn')}>Войти</button>
+        <div className={authCN("login")}>
+            <h1 className={authCN('label')}>Вход в систему VMP</h1>
+            <form method="post">
+                <input type="text" name="u" placeholder="Введите логин" required="required" className={authCN('form')}/>
+                <input type="password" name="p" placeholder="Введите пароль" required="required" className={authCN('form')}/>
+                <button type="submit" className={authCN("login-btn")}>Войти</button>
+            </form>
+        </div>
     </div>)
 
 };

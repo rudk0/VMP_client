@@ -1,0 +1,28 @@
+@import "../../colors.scss";
+
+.main{
+  &-container{
+    display:block;
+    margin: auto;
+    margin-top: 30px;
+  }
+  &-label{
+    color: aliceblue;
+    margin-bottom: 130px;
+    margin-top: 30px;
+  }
+  &-btn{
+    margin: 40px;
+    padding: 20px;
+    color: aliceblue;
+    font-weight: bold;
+    background: $dark-purple;
+    border: 2px solid $dark-purple;
+    border-radius: 5px;
+  }
+  &-btn-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
