@@ -7,21 +7,23 @@
     margin-top: 30px;
   }
   &-label{
-    color: aliceblue;
-    margin-bottom: 130px;
+    color: #555555;
+    margin-bottom: 110px;
     margin-top: 30px;
   }
   &-btn{
-    margin: 40px;
-    padding: 20px;
+    margin: 20px;
     color: aliceblue;
     background: $dark-purple;
     border: 2px solid $dark-purple;
-    border-radius: 5px;
+    min-width: 310px;
+    min-height: 75px;
+
   }
   &-btn-container{
     display: flex;
     align-items: center;
+    flex-flow:column ;
     justify-content: space-between;
   }
 }

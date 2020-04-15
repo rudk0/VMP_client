@@ -5,23 +5,26 @@
     display:block;
     margin: auto;
     margin-top: 30px;
+    background: aliceblue;
+    padding: 10px;
+    box-shadow: #181818;
   }
   &-label{
-    color: aliceblue;
+    color: #555555;
     margin-bottom: 130px;
     margin-top: 30px;
   }
   &-label1{
-    color: aliceblue;
-    flex: 220px;
-    margin: 10px;
+    color: #555555;
+    flex: 270px;
+    margin: 5px;
   }
   &-select{
-    margin: 10px;
+    margin: 5px;
     padding: 10px;
     border-radius: 5px;
     color: aliceblue;
-    //font-weight: bold;
+    width: 145px;
     background: $dark-purple;
     border: 2px solid $dark-purple;
 
@@ -29,13 +32,11 @@
   &-list-container{
     display: flex;
     flex-flow: row wrap;
-    //align-items: center;
-    //justify-content: space-between;
+    justify-content: space-between;
   }
   &-btn{
     margin: 40px;
     padding: 15px;
-    border-radius: 5px;
     background: $grey;
     border: 1px solid $grey;
     color: aliceblue;
@@ -43,9 +44,8 @@
   &-btn2{
     margin: 40px;
     padding: 15px;
-    border-radius: 5px;
-    background: $green;
-    border: 1px solid $green;
+    background: rgba(76,95,245,0.85);
+    border: 1px solid rgba(76,95,245,0.85);
     color: aliceblue;
   }
 }
