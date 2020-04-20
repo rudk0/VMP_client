@@ -1,7 +1,6 @@
 import axios from 'axios';
 
 import {API_URL} from './baseAPI'
-import querystring from "querystring";
 
 export const authApi = {
     auth: async (login, password) => {
