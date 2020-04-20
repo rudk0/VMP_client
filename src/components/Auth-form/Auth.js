@@ -2,15 +2,17 @@ import React from "react";
 import {cn} from '@bem-react/classname'
 import './Auth.scss';
 import 'axios';
-import {authApi} from "../../api/login";
+import {authActions} from "../../redux/auth/authSlice";
+import {useDispatch} from "react-redux";
 
 const authCN = cn('auth');
 export  const Auth = () =>{
+    const dispatch = useDispatch();
     function handleForm(e) {
         e.preventDefault();
         let login = document.getElementById("login").value;
         let password = document.getElementById("password").value;
-        authApi.auth(login, password);
+        dispatch(authActions.auth({login, password}));
     }
     return (<div className={authCN('container')}>
         <div className={authCN("login")}>

@@ -12,9 +12,11 @@ export const authApi = {
         } );
         if (response.status === 200) {
             const token = response.data.token;
-
+            const {firstName, lastName} = response.data;
             axios.defaults.headers.common.Authorization = token;
             localStorage.setItem('authToken', token);
+            localStorage.setItem('name', firstName);
+            localStorage.setItem('surname', lastName);
         }
     }
 }
