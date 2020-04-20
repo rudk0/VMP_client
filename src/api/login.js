@@ -6,15 +6,11 @@ import querystring from "querystring";
 export const authApi = {
     auth: async (login, password) => {
 
-        const config = {
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            }
-        }
-        const response = await axios.post(`${API_URL}login`, querystring.stringify({
-            username: login,
-            password: password
-        }), config);
+
+        const response = await axios.post(`${API_URL}api/auth/signin`, {
+            login,
+            password
+        } );
         if (response.status === 200) {
             const token = response.data.token;
 

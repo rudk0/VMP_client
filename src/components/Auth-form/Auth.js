@@ -14,7 +14,7 @@ export  const Auth = () =>{
     }
     return (<div className={authCN('container')}>
         <div className={authCN("login")}>
-            <h1 className={authCN('label')}>Вход в систему VMP</h1>
+            <h1 className={authCN('label')}>Вход в систему VMP🌈⛹</h1>
             <form method="post" onSubmit={(e)=>handleForm(e)}>
                 <input id="login" type="text" name="u" placeholder="Введите логин" required="required" className={authCN('form')}/>
                 <input id="password"  type="password" name="p" placeholder="Введите пароль" required="required" className={authCN('form')}/>

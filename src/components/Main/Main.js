@@ -8,11 +8,11 @@ export  const Main = () =>{
     return (<div className={mainCN('container')}>
         <h2 className={mainCN('label')}>Главная страница</h2>
         <div className={mainCN('btn-container')}>
-        <button className={mainCN('btn')}>Сформировать список РО</button>
+            <Link to={"/ro"}>
+        <button className=src/api/login.js{mainCN('btn')}>Сформировать список РО</button>
+            </Link>
         <button className={mainCN('btn')}>Создать коммерческое предложение</button>
-           <Link to={"/ro"}>
         <button className={mainCN('btn')} >Создать рекламный объект</button>
-           </Link>
         </div>
     </div>)
 
