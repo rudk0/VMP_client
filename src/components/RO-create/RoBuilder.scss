@@ -8,6 +8,7 @@
     background: #f3f3f3;
     padding: 10px;
     box-shadow: #181818;
+    max-width: 1200px;
   }
   &-label{
     color: #555555;
@@ -22,6 +23,9 @@
   &-select{
     width: 145px;
     margin: 10px;
+  }
+  input{
+    padding: 5px;
   }
   &-list-container{
     display: flex;
