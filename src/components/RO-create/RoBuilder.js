@@ -14,7 +14,7 @@ const robuildCN = cn('robuild');
 export const RoBuilder = () => {
     return (<div className={robuildCN('container')}>
         <h2 className={robuildCN('label')}>Создание РО</h2>
-        <form method={post}>
+        <form method={'post'}>
         <div className={robuildCN('list-container')}>
             <p className={robuildCN('label1')}>Тип объекта:</p>
             <Select options = {options} className={robuildCN('select')}/>
