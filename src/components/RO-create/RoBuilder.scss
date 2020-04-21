@@ -1,6 +1,6 @@
 @import "../../colors.scss";
 
-.ro{
+.robuild{
   &-container{
     display:block;
     margin: auto;
@@ -8,7 +8,6 @@
     background: #f3f3f3;
     padding: 10px;
     box-shadow: #181818;
-    width: 1000px;
   }
   &-label{
     color: #555555;
@@ -24,7 +23,6 @@
     width: 145px;
     margin: 10px;
   }
-
   &-list-container{
     display: flex;
     flex-flow: row wrap;
