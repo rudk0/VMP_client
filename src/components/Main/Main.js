@@ -13,7 +13,9 @@ export  const Main = () =>{
             <Link to={"/ro"}>
         <button className={mainCN('btn')}>Сформировать список РО</button>
             </Link>
+            <Link to={"/kpbuilder"}>
         <button className={mainCN('btn')}>Создать коммерческое предложение</button>
+            </Link>
             <Link to={"/robuilder"}>
         <button className={mainCN('btn')} >Создать рекламный объект</button>
             </Link>

@@ -12,6 +12,7 @@ import {RO} from "./components/RO-form/RO";
 import {connect} from "react-redux";
 import {isAuthorizedSelector} from "./redux/auth/authSelectors";
 import {RoBuilder} from "./components/RO-create/RoBuilder";
+import {KP} from "./components/KP-builder/KP";
 
 function App(props) {
   const {isAuthorized, location} = props;
@@ -23,6 +24,7 @@ function App(props) {
         <NonAuthorizedRoute exact={true} path={'/login'} component={Auth} isAuthorized={isAuthorized}/>
         <AuthorizedRoute path={Routes.Ro} component={RO} isAuthorized={isAuthorized} withNavigation/>
         <AuthorizedRoute path={Routes.RoBuilder} component={RoBuilder} isAuthorized={isAuthorized} withNavigation/>
+        <AuthorizedRoute path={Routes.KpBuilder} component={KP} isAuthorized={isAuthorized} withNavigation/>
         <AuthorizedRoute path={Routes.Main} component={Main} isAuthorized={isAuthorized} withNavigation/>
         <Redirect to={Routes.Main}/>
       </Switch>
