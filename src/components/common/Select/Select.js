@@ -5,7 +5,7 @@ import Select from 'react-select';
 
 const selectCN = cn('select');
 export const Sel = props => {
-    const {label, options, defaultValue, width} = props;
+    const {label, options, defaultValue} = props;
     const customStyles = {
         menu: (provided, state) => ({
             ...provided,

@@ -7,6 +7,8 @@ import {aoActions} from "../../redux/ao/aoSlice";
 import {aoCitySelector, aoFormatsSelector, aoSegmentSelector, aoTypesSelector} from "../../redux/ao/aoSelectors";
 import {Sel as Select} from '../common/Select/Select'
 import {offerSelect, reservedSelect} from "../../const/AOConsts";
+import {Button} from "../common/Button/Button";
+
 const roCN = cn('ro');
 export const RO = () => {
 
@@ -29,11 +31,10 @@ export const RO = () => {
   const segments = useSelector(aoSegmentSelector).map(item => {
     return {value: item.segment, label: item.segment}
   })
-console.log(useSelector(aoSegmentSelector));
 
   return (<div className={roCN('container')}>
       <h2 className={roCN('label')}>Формирование списка РО</h2>
-      <form >
+      <form>
         <div className={roCN('list-container')}>
           <Select label={"Тип объекта:"} options={types}/>
           <Select label={"Город:"} options={cities}/>
@@ -43,11 +44,10 @@ console.log(useSelector(aoSegmentSelector));
           <Select label={"Договор"} options={offerSelect}/>
         </div>
         <Link to={"/main"}>
-          <button className={roCN('btn')}>Отмена</button>
+          <Button variant="discard">Отмена</Button>
         </Link>
-        <button type="submit" className={roCN('btn2')}>Сформировать список</button>
+        <Button type="submit" variant="submit">Сформировать список</Button>
       </form>
     </div>
   )
-
 };
