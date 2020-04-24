@@ -1,8 +1,19 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {cn} from '@bem-react/classname'
 import './RoBuilder.scss';
-import Select from 'react-select';
 import { Link } from 'react-router-dom';
+import {Sel as Select} from '../common/Select/Select'
+import {useDispatch, useSelector} from "react-redux";
+import {aoActions} from "../../redux/ao/aoSlice";
+import {
+    aoCitySelector,
+    aoFormatsSelector,
+    aoSegmentSelector,
+    aoSignificanceSelector,
+    aoTypesSelector
+} from "../../redux/ao/aoSelectors";
+import {floorSelect, neighborsSelect, pocketSelect, possibilitySelect} from "../../const/AOConsts";
+
 const options = [
     { value: 'blues', label: 'Blues' },
     { value: 'rock', label: 'Rock' },
@@ -12,49 +23,57 @@ const options = [
 
 const robuildCN = cn('robuild');
 export const RoBuilder = () => {
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(aoActions.getSegments())
+        dispatch(aoActions.getTypes());
+        dispatch(aoActions.getCities());
+        dispatch(aoActions.getFormats());
+        dispatch(aoActions.getSignificance());
+    }, [dispatch]);
+    const types = useSelector(aoTypesSelector).map(item => {
+        return {value: item.type, label: item.type}
+    });
+    const cities = useSelector(aoCitySelector).map(item => {
+        return {value: item.city, label: item.city}
+    })
+    const formats = useSelector(aoFormatsSelector).map(item => {
+        return {value: item.format, label: item.format}
+    })
+    const segments = useSelector(aoSegmentSelector).map(item => {
+        return {value: item.segment, label: item.segment}
+    })
+    const significance = useSelector(aoSignificanceSelector).map(item => {
+        return {value: item.significance, label: item.significance}
+    })
     return (<div className={robuildCN('container')}>
         <h2 className={robuildCN('label')}>Создание РО</h2>
         <form method={'post'}>
         <div className={robuildCN('list-container')}>
-            <label className={robuildCN('label1')}>Город:
-            <Select options = {options} className={robuildCN('select')}/>
-            </label>
-            <label className={robuildCN('label1')}>Тип объекта:
-            <Select options = {options} className={robuildCN('select')}/>
-            </label>
+            <Select label={"Город:"} options = {cities} />
+            <Select label={"Тип объекта:"} options = {types} />
+            <Select label={"Социальная значимость:"} options = {significance} />
             <label className={robuildCN('label1')}>Название объекта:
                 <input type="text" name="name" />
             </label>
             <label className={robuildCN('label1')}>Адрес объекта:
                 <input type="text" name="address" />
             </label>
-            <label className={robuildCN('label1')}>Этаж:
-                <Select options = {options} className={robuildCN('select')}/>
-            </label>
-            <label className={robuildCN('label1')}>Формат размещения:
-                <Select options = {options} className={robuildCN('select')}/>
-            </label>
+            <Select label={"Этаж:"} options = {floorSelect} />
+            <Select label={"Формат размещения:"} options = {formats} />
+            <Select label={"Соседи:"} options = {neighborsSelect} />
+            <Select label={"Возможность размещения:"} options = {possibilitySelect} />
             <label className={robuildCN('label1')}>Описанние места:
-                <input type="text" name="name" />
+                <input type="text" name="placeDescription" />
             </label>
             <label className={robuildCN('label1')}>Описание специалистов:
-                <input type="text" name="address" />
+                <input type="text" name="specialistDescription" />
             </label>
-            <label className={robuildCN('label1')}>Сегмент:
-                <Select options = {options} className={robuildCN('select')}/>
-            </label>
-            <label className={robuildCN('label1')}>Подсегмент 1:
-                <Select options = {options} className={robuildCN('select')}/>
-            </label>
-            <label className={robuildCN('label1')}>Подсегмент 2:
-                <Select options = {options} className={robuildCN('select')}/>
-            </label>
-            <label className={robuildCN('label1')}>Подсегмент 3:
-                <Select options = {options} className={robuildCN('select')}/>
-            </label>
-            <label className={robuildCN('label1')}>Наличие кармана (кол-во):
-                <Select options = {options} className={robuildCN('select')}/>
-            </label>
+            <Select label={"Сегмент:"} options = {segments} />
+            <Select label={"Подсегмент 1:"} options = {segments} />
+            <Select label={"Подсегмент 2:"} options = {segments} />
+            <Select label={"Подсегмент 3:"} options = {segments} />
+            <Select label={"Наличие кармана (кол-во):"} options = {pocketSelect} />
             <label className={robuildCN('label1')}>Закупочная цена (рубли):
                 <input type="text" name="cost" />
             </label>

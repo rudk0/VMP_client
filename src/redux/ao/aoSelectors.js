@@ -16,3 +16,7 @@ export const aoSegmentSelector = createSelector(
     [state => state.ao.filters.segments],
     segments => segments
 )
+export const aoSignificanceSelector = createSelector(
+  [state => state.ao.filters.significance],
+  significance => significance
+)

@@ -14,6 +14,9 @@ export const AOApi = {
   },
   getSegments() {
     return axios.get(API_URL + 'segments');
+  },
+  getSignificance() {
+    return axios.get(API_URL + 'significance');
   }
 }
 

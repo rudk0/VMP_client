@@ -39,13 +39,22 @@ function* getSegments() {
     error(e);
   }
 }
+function* getSignificance() {
+  try {
+    const response = yield AOApi.getSignificance();
+    yield put(aoActions.setSignificance(response.data))
+  } catch (e) {
+    error(e);
+  }
+}
 
 function* sagas() {
   yield all([
     takeLatest(AO_ACTION_TYPES.GET_TYPES, getTypes),
     takeLatest(AO_ACTION_TYPES.GET_CITIES, getCities),
     takeLatest(AO_ACTION_TYPES.GET_FORMATS, getFormats),
-    takeLatest(AO_ACTION_TYPES.GET_SEGMENTS, getSegments)
+    takeLatest(AO_ACTION_TYPES.GET_SEGMENTS, getSegments),
+    takeLatest(AO_ACTION_TYPES.GET_SIGNIFICANCE, getSignificance)
   ])
 }
 

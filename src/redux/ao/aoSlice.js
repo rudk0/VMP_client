@@ -5,7 +5,8 @@ const initialState = {
         types: [],
         cities: [],
         formats: [],
-        segments: []
+        segments: [],
+        significance: []
     }
 }
 const aoSlice = createSlice({
@@ -53,7 +54,18 @@ const aoSlice = createSlice({
                         types: action.payload
                     }
                 }
+            },
+        getSignificance: () => {
+        },
+        setSignificance: (state, action) => {
+            return {
+                ...state,
+                filters: {
+                    ...state.filters,
+                    significance: action.payload
+                }
             }
+        }
         },
 
     }
