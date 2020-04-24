@@ -6,8 +6,8 @@ import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {aoActions} from "../../redux/ao/aoSlice";
 import {aoTypesSelector} from "../../redux/ao/aoSelectors";
-
-
+import {Sel} from '../common/Select/Select'
+import {offerSelect} from "../../const/AOConsts";
 const options = [
   {value: 'blues', label: 'Blues'},
   {value: 'rock', label: 'Rock'},
@@ -24,7 +24,6 @@ export const RO = () => {
   const types = useSelector(aoTypesSelector).map(item => {
     return {value: item.type, label: item.type}
   });
-  console.log(types);
   return (<div className={roCN('container')}>
       <h2 className={roCN('label')}>Формирование списка РО</h2>
       <form method={'post'}>
@@ -36,17 +35,15 @@ export const RO = () => {
             <Select options={types} className={roCN('select')}/>
           </label>
           <label className={roCN('label1')}>Статус объекта:
-            <Select options={options} className={roCN('select')}/>
+            <Select   options={options} className={roCN('select')}/>
           </label>
           <label className={roCN('label1')}>Сегмент:
             <Select options={options} className={roCN('select')}/>
           </label>
-          <label className={roCN('label1')}>Формат размещения:
+          <label  className={roCN('label1')}>Формат размещения:
             <Select options={options} className={roCN('select')}/>
           </label>
-          <label className={roCN('label1')}>Договор:
-            <Select options={options} className={roCN('select')}/>
-          </label>
+          <Sel label={"Договор"} options={offerSelect}  />
         </div>
 
         <Link to={"/main"}>
