@@ -1,7 +1,14 @@
-
 import {createSelector} from "reselect";
 
 export const aoTypesSelector = createSelector(
-  [state => state.ao.types],
+  [state => state.ao.filters.types],
   types => types
+)
+export const aoCitySelector = createSelector(
+  [state => state.ao.filters.cities],
+  cities => cities
+)
+export const aoFormatsSelector = createSelector(
+  [state => state.ao.filters.formats],
+  formats => formats
 )
