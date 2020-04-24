@@ -69,3 +69,29 @@ export const possibilitySelect = [
     value: false, label: 'Нет'
   }
 ]
+export const ROBuilderInitialState = {
+  address: '',
+  city_id: 1,
+  client: '',
+  comments: "",
+  contract: "",
+  date_from: "",
+  date_to: "",
+  floor: 1,
+  mi_id: 1,
+  mi_type_id: 1,
+  name: "",
+  neighbors: true,
+  photo: "",
+  place_description: "",
+  placing_format_id: 0,
+  pockets: 0,
+  possibility_of_placement: true,
+  price: 0,
+  reservation_status: true,
+  segment_id: 0,
+  specialist_description: "",
+  subsegment1_id: 0,
+  subsegment2_id: 0,
+  subsegment3_id: 0
+}

@@ -5,15 +5,18 @@ import Select from 'react-select';
 
 const selectCN = cn('select');
 export const Sel = props => {
-    const {label, options, defaultValue} = props;
-    const customStyles = {
-        menu: (provided, state) => ({
-            ...provided,
-            textAlign: 'left'
-        }),
-    }
-    return (<label className={selectCN('label')}>{label}
-            <Select styles={customStyles} options={options} defaultValue={defaultValue} className={selectCN('item')}/>
-        </label>
-    );
+  const {label, options, onChange, name, value } = props;
+  const customStyles = {
+    menu: (provided, state) => ({
+      ...provided,
+      textAlign: 'left'
+    }),
+  }
+  return (<label className={selectCN('label')}>{label}
+      <Select name={name} onChange={(e) => {
+        e.name=name;
+        onChange(e)
+      }} styles={customStyles} options={options} defaultValue={options.filter(o => o.value === value)} className={selectCN('item')}/>
+    </label>
+  );
 };
