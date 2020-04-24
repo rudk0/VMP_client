@@ -1,18 +1,46 @@
 import {createSlice} from "@reduxjs/toolkit";
 
 const initialState = {
-  types: []
+  filters: {
+    types: [],
+    cities: [],
+    formats: []
+  }
 }
 const aoSlice = createSlice({
   name: 'ao', initialState, reducers: {
     getTypes: state => {
     },
+    getCities: () => {
+    },
+    setCities: (state, action) => {
+      return {
+        ...state,
+        filters: {
+          ...state.filters,
+          cities: action.payload
+        }
+      }
+    },
+    getFormats: () => {
+    },
+    setFormats: (state, action) => {
+      return {
+        ...state,
+        filters: {
+          ...state.filters,
+          formats: action.payload
+        }
+      }
+    },
     setTypes: (state, action) => {
       return {
         ...state,
-        types: action.payload
+        filters: {
+          ...state.filters,
+          types: action.payload
+        }
       }
-
     }
   }
 })
