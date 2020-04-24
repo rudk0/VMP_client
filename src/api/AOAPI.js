@@ -11,7 +11,9 @@ export const AOApi = {
   },
   getFormats() {
     return axios.get(API_URL + 'formats');
-
+  },
+  getSegments() {
+    return axios.get(API_URL + 'segments');
   }
 }
 

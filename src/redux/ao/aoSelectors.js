@@ -12,3 +12,7 @@ export const aoFormatsSelector = createSelector(
   [state => state.ao.filters.formats],
   formats => formats
 )
+export const aoSegmentSelector = createSelector(
+    [state => state.ao.filters.segments],
+    segments => segments
+)

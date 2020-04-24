@@ -4,21 +4,15 @@ import './RO.scss';
 import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {aoActions} from "../../redux/ao/aoSlice";
-import {aoCitySelector, aoFormatsSelector, aoTypesSelector} from "../../redux/ao/aoSelectors";
+import {aoCitySelector, aoFormatsSelector, aoSegmentSelector, aoTypesSelector} from "../../redux/ao/aoSelectors";
 import {Sel as Select} from '../common/Select/Select'
-import {offerSelect} from "../../const/AOConsts";
-
-const options = [
-  {value: 'blues', label: 'Blues'},
-  {value: 'rock', label: 'Rock'},
-  {value: 'jazz', label: 'Jazz'},
-  {value: 'orchestra', label: 'Orchestra'}
-];
+import {offerSelect, reservedSelect} from "../../const/AOConsts";
 const roCN = cn('ro');
 export const RO = () => {
 
   const dispatch = useDispatch();
   useEffect(() => {
+    dispatch(aoActions.getSegments())
     dispatch(aoActions.getTypes());
     dispatch(aoActions.getCities());
     dispatch(aoActions.getFormats());
@@ -30,19 +24,22 @@ export const RO = () => {
     return {value: item.city, label: item.city}
   })
   const formats = useSelector(aoFormatsSelector).map(item => {
-    return {value: item.city, label: item.format}
+    return {value: item.format, label: item.format}
   })
+  const segments = useSelector(aoSegmentSelector).map(item => {
+    return {value: item.segment, label: item.segment}
+  })
+console.log(useSelector(aoSegmentSelector));
 
-  console.log(types);
   return (<div className={roCN('container')}>
       <h2 className={roCN('label')}>Формирование списка РО</h2>
-      <form method={'post'}>
+      <form >
         <div className={roCN('list-container')}>
           <Select label={"Тип объекта:"} options={types}/>
           <Select label={"Город:"} options={cities}/>
-          <Select label={"Статус объекта:"} options={options}/>
-          <Select options={options} label={"Сегмент:"}/>
-          <Select options={formats} label={"Формат размещения:"}/>
+          <Select label={"Статус объекта:"} options={reservedSelect}/>
+          <Select label={"Сегмент:"} options={segments}/>
+          <Select label={"Формат размещения:"} options={formats}/>
           <Select label={"Договор"} options={offerSelect}/>
         </div>
         <Link to={"/main"}>

@@ -6,8 +6,8 @@ import {AO_ACTION_TYPES} from "./aoConstant";
 
 function* getCities() {
   try {
-  const response = yield AOApi.getCities();
-  yield put(aoActions.setCities(response.data));
+    const response = yield AOApi.getCities();
+    yield put(aoActions.setCities(response.data));
   } catch (e) {
     error(e);
   }
@@ -21,6 +21,7 @@ function* getTypes() {
     error(e);
   }
 }
+
 function* getFormats() {
   try {
     const response = yield AOApi.getFormats();
@@ -30,12 +31,21 @@ function* getFormats() {
   }
 }
 
+function* getSegments() {
+  try {
+    const response = yield AOApi.getSegments();
+    yield put(aoActions.setSegments(response.data))
+  } catch (e) {
+    error(e);
+  }
+}
 
 function* sagas() {
   yield all([
     takeLatest(AO_ACTION_TYPES.GET_TYPES, getTypes),
     takeLatest(AO_ACTION_TYPES.GET_CITIES, getCities),
-    takeLatest(AO_ACTION_TYPES.GET_FORMATS, getFormats)
+    takeLatest(AO_ACTION_TYPES.GET_FORMATS, getFormats),
+    takeLatest(AO_ACTION_TYPES.GET_SEGMENTS, getSegments)
   ])
 }
 
