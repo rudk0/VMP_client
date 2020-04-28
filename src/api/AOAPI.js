@@ -17,6 +17,9 @@ export const AOApi = {
   },
   getSignificance() {
     return axios.get(API_URL + 'significance');
+  },
+  getList(filters) {
+    return axios.get(API_URL + 'ao', filters);
   }
 }
 

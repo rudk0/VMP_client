@@ -31,7 +31,7 @@ export const RoBuilder = () => {
     e.preventDefault();
     ROApi.postRo(roState)
       .then((data) => {
-        notify("Object created sexesfuly");
+        notify("Object created successfully");
         setRoState(ROBuilderInitialState);
       }).catch((err) => {
       error("Something went wrong" + err);

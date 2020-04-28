@@ -47,6 +47,14 @@ function* getSignificance() {
     error(e);
   }
 }
+function* getList({payload}) {
+  try {
+    const response = yield AOApi.getList(payload);
+    yield put(aoActions.setSignificance(response.data))
+  } catch (e) {
+    error(e);
+  }
+}
 
 function* sagas() {
   yield all([
@@ -54,7 +62,8 @@ function* sagas() {
     takeLatest(AO_ACTION_TYPES.GET_CITIES, getCities),
     takeLatest(AO_ACTION_TYPES.GET_FORMATS, getFormats),
     takeLatest(AO_ACTION_TYPES.GET_SEGMENTS, getSegments),
-    takeLatest(AO_ACTION_TYPES.GET_SIGNIFICANCE, getSignificance)
+    takeLatest(AO_ACTION_TYPES.GET_SIGNIFICANCE, getSignificance),
+    takeLatest(AO_ACTION_TYPES.GET_AO_LIST, getList)
   ])
 }
 

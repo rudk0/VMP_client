@@ -95,3 +95,12 @@ export const ROBuilderInitialState = {
   subsegment2_id: 0,
   subsegment3_id: 0
 }
+
+export const RoInitialState = {
+  city_id: 1,
+  contract: "",
+  mi_type_id: 1,
+  placing_format_id: 0,
+  reservation_status: true,
+  segment_id: 0,
+}

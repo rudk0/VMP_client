@@ -55,9 +55,20 @@ const aoSlice = createSlice({
                     }
                 }
             },
-        getSignificance: () => {
+            getSignificance: () => {
         },
-        setSignificance: (state, action) => {
+            setSignificance: (state, action) => {
+            return {
+                ...state,
+                filters: {
+                    ...state.filters,
+                    significance: action.payload
+                 }
+             }
+         },
+        getList: () => {
+        },
+        setList: (state, action) => {
             return {
                 ...state,
                 filters: {

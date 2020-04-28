@@ -4,5 +4,6 @@ export const AO_ACTION_TYPES = {
   GET_CITIES: 'ao/getCities',
   GET_FORMATS: 'ao/getFormats',
   GET_SEGMENTS: 'ao/getSegments',
-  GET_SIGNIFICANCE: 'ao/getSignificance'
+  GET_SIGNIFICANCE: 'ao/getSignificance',
+  GET_AO_LIST: 'ao/getList'
 };
