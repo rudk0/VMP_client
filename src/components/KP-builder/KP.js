@@ -4,6 +4,7 @@ import './KP.scss';
 import {Sel as Select} from "../common/Select/Select";
 import {Link} from "react-router-dom";
 import {Button} from "../common/Button/Button";
+import {TextInput} from "../common/TextInput/TextInput";
 
 
 const options = [
@@ -20,12 +21,28 @@ export const KP = () => {
           <h2 className={kpCN('label')}>Создание КП</h2>
           <form >
               <div className={kpCN('list-container')}>
-                  <Select label={"Тип объекта:"} name="mi_type_id" options={options} />
+                  <TextInput type="text" name="name"
+                           label="Коммерческое предложение:"/>
+                <TextInput type="text" name="client"
+                           label="Клиент:"/>
+                <TextInput type="text" name="brand"
+                           label="Бренд:"/>
+                <TextInput type="date" name="date_from"
+                           label="Период с "/>
+                <TextInput type="date" name="date_to"
+                           label=" до "/>
+                <TextInput type="date" name="creating_date"
+                           label="Дата создания:"/>
+                <TextInput type="text" name="placing_format"
+                           label="Формат:"/>
+                <Button type="submit" variant="submit">Выбрать из списка</Button>
               </div>
+            <Button type="submit" variant="submit">Добавить данные из адресной программы</Button>
               <Link to={"/main"}>
                   <Button variant="discard">Отмена</Button>
               </Link>
-              <Button type="submit" variant="submit">Сформировать список</Button>
+              <Button type="submit" variant="extra">Предварительный просмотр</Button>
+              <Button type="submit" variant="extra">Экспортировать КП в Excel</Button>
           </form>
       </div>
     )

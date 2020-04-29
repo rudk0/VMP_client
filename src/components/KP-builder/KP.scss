@@ -21,28 +21,10 @@
     margin: 5px;
     //margin-left: -15px;
   }
-  &-select{
-    width: 260px;
-    margin: 10px;
-  }
 
   &-list-container{
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
-  }
-  &-btn{
-    margin: 40px;
-    padding: 10px 15px;
-    background: $grey;
-    border: 1px solid $grey;
-    color: aliceblue;
-  }
-  &-btn2{
-    margin: 40px;
-    padding: 10px 15px;
-    background: rgba(76,95,245,0.85);
-    border: 1px solid rgba(76,95,245,0.85);
-    color: aliceblue;
   }
 }
