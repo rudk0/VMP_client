@@ -6,23 +6,24 @@ import {useDispatch, useSelector} from "react-redux";
 import {aoActions} from "../../redux/ao/aoSlice";
 import {aoCitySelector, aoFormatsSelector, aoSegmentSelector, aoTypesSelector} from "../../redux/ao/aoSelectors";
 import {Sel as Select} from '../common/Select/Select'
-import {offerSelect, reservedSelect, RoInitialState} from "../../const/AOConsts";
+import {offerSelect, reservedSelect, RoInitialState, tableAOHeader} from "../../const/AOConsts";
 import {Button} from "../common/Button/Button";
 import {error, notify} from "../../helpers/toaster-helper";
 import {AOApi} from "../../api/AOAPI";
+import {AoTable} from "../AO-table/AoTable";
 
 const roCN = cn('ro');
 export const RO = () => {
-
-  const [roState, setRoState] = useState({filters: RoInitialState, data: []});
-
-
+  const [roState, setRoState] = useState({filters: RoInitialState, data: [], requested: false});
   const handleRoForm = (e) => {
     e.preventDefault();
     AOApi.getList(roState.filters)
       .then((data) => {
         notify("List formed successfully");
-        setRoState({filters: RoInitialState, data: data.data});
+        setRoState({
+          ...roState,
+          data: data.data, requested: true
+        });
       }).catch((err) => {
       error("Something went wrong" + err);
     })
@@ -64,7 +65,7 @@ export const RO = () => {
     );
   }
 
-  return (<div className={roCN('container')}>
+  return (<><div className={roCN('container')}>
       <h2 className={roCN('label')}>Формирование списка РО</h2>
       <form onSubmit={(e) => {
         handleRoForm(e);
@@ -84,6 +85,10 @@ export const RO = () => {
         </Link>
         <Button type="submit" variant="submit">Сформировать список</Button>
       </form>
+
     </div>
+  {roState.requested && <AoTable columns={tableAOHeader()} data={roState.data}></AoTable>}
+    </>
+
   )
 };

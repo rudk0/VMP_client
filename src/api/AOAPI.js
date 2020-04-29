@@ -20,10 +20,8 @@ export const AOApi = {
     return axios.get(API_URL + 'significance');
   },
   getList(filters) {
-    camelize(esc(camelize()));
     const esc = encodeURIComponent;
     const query = Object.keys(filters).map(k => esc(camelize(k) ) + '=' + filters[k]).join('&');
-
     return axios({method: "get", url: API_URL + 'ao?' + query});
   }
 }

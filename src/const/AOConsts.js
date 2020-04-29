@@ -96,11 +96,19 @@ export const ROBuilderInitialState = {
   subsegment3_id: 0
 }
 
-export const RoInitialState = {
-  city_id: 1,
-  contract: "",
-  mi_type_id: 1,
-  placing_format_id: 0,
-  reservation_status: true,
-  segment_id: 0,
+export const RoInitialState = {}
+export const tableAOHeader = () => {
+  return [{Header: "Город", accessor: "city_id.city"}, {Header: "Объект", accessor: "name"}, {
+    Header: "Объект фактический адрес",
+    accessor: "address"
+  }, {Header: "Формат размещения", accessor: "placing_format_id.format"}, {
+    Header: "Этаж",
+    accessor: "floor  "
+  }, , {Header: "Соседи", accessor: "neighbors"}, {Header: "Кол-во карманов", accessor: "pockets"}, {
+    Header: "Цена, руб",
+    accessor: "price"
+  }, {
+    Header: "Описание места",
+    accessor: "place_description"
+  }]
 }
