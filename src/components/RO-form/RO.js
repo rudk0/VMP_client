@@ -6,23 +6,23 @@ import {useDispatch, useSelector} from "react-redux";
 import {aoActions} from "../../redux/ao/aoSlice";
 import {aoCitySelector, aoFormatsSelector, aoSegmentSelector, aoTypesSelector} from "../../redux/ao/aoSelectors";
 import {Sel as Select} from '../common/Select/Select'
-import {offerSelect, reservedSelect, ROBuilderInitialState, RoInitialState} from "../../const/AOConsts";
+import {offerSelect, reservedSelect, RoInitialState} from "../../const/AOConsts";
 import {Button} from "../common/Button/Button";
-import {ROApi} from "../../api/ROAPI";
 import {error, notify} from "../../helpers/toaster-helper";
 import {AOApi} from "../../api/AOAPI";
 
 const roCN = cn('ro');
 export const RO = () => {
 
-  const [roState, setRoState] = useState(RoInitialState);
+  const [roState, setRoState] = useState({filters: RoInitialState, data: []});
+
 
   const handleRoForm = (e) => {
     e.preventDefault();
-    AOApi.getList(roState)
+    AOApi.getList(roState.filters)
       .then((data) => {
         notify("List formed successfully");
-        setRoState(RoInitialState);
+        setRoState({filters: RoInitialState, data: data.data});
       }).catch((err) => {
       error("Something went wrong" + err);
     })
@@ -36,16 +36,16 @@ export const RO = () => {
     dispatch(aoActions.getFormats());
   }, [dispatch]);
   const types = useSelector(aoTypesSelector).map(item => {
-    return {value: item.type, label: item.type}
+    return {value: item.id, label: item.type}
   });
   const cities = useSelector(aoCitySelector).map(item => {
-    return {value: item.city, label: item.city}
+    return {value: item.id, label: item.city}
   })
   const formats = useSelector(aoFormatsSelector).map(item => {
-    return {value: item.format, label: item.format}
+    return {value: item.id, label: item.format}
   })
   const segments = useSelector(aoSegmentSelector).map(item => {
-    return {value: item.segment, label: item.segment}
+    return {value: item.id, label: item.segment}
   })
 
   const handleInputChange = (event) => {
@@ -56,20 +56,27 @@ export const RO = () => {
       value = target.value
     }
     setRoState({
-      ...roState,
-      [name]: value
-    });
+        ...roState,
+        filters: {
+          [name]: value
+        }
+      }
+    );
   }
 
   return (<div className={roCN('container')}>
       <h2 className={roCN('label')}>Формирование списка РО</h2>
-      <form onSubmit={(e)=>{handleRoForm(e);}}>
+      <form onSubmit={(e) => {
+        handleRoForm(e);
+      }}>
         <div className={roCN('list-container')}>
           <Select onChange={(e) => handleInputChange(e)} label={"Тип объекта:"} name="mi_type_id" options={types}/>
           <Select onChange={(e) => handleInputChange(e)} label={"Город:"} name="city_id" options={cities}/>
-          <Select onChange={(e) => handleInputChange(e)} label={"Статус объекта:"} name="reservation_status" options={reservedSelect}/>
+          <Select onChange={(e) => handleInputChange(e)} label={"Статус объекта:"} name="reservation_status"
+                  options={reservedSelect}/>
           <Select onChange={(e) => handleInputChange(e)} label={"Сегмент:"} name="segment_id" options={segments}/>
-          <Select onChange={(e) => handleInputChange(e)} label={"Формат размещения:"} name="placing_format_id" options={formats}/>
+          <Select onChange={(e) => handleInputChange(e)} label={"Формат размещения:"} name="placing_format_id"
+                  options={formats}/>
           <Select onChange={(e) => handleInputChange(e)} label={"Договор"} name="contract" options={offerSelect}/>
         </div>
         <Link to={"/main"}>

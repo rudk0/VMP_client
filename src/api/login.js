@@ -11,7 +11,7 @@ export const authApi = {
         if (response.status === 200) {
             const jwt = response.data.jwt;
             const {firstName, lastName, cityId, roles} = response.data;
-            axios.defaults.headers.common.Authorization = jwt;
+            axios.defaults.headers.common.Authorization = 'Bearer '+jwt;
             localStorage.setItem('authToken', jwt);
             localStorage.setItem('name', firstName);
             localStorage.setItem('surname', lastName);
@@ -23,7 +23,7 @@ export const authApi = {
 export const initializeAuth = () => {
     const token = localStorage.getItem('authToken');
     if (token) {
-        axios.defaults.headers.common.Authorization = token;
+        axios.defaults.headers.common.Authorization = 'Bearer ' + token;
     }
 }
 initializeAuth();

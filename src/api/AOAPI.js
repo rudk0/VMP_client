@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 import {API_URL} from './baseAPI'
+import {camelize} from "../helpers/helperOtPoliny";
 
 export const AOApi = {
   getTypes: async () => {
@@ -19,7 +20,10 @@ export const AOApi = {
     return axios.get(API_URL + 'significance');
   },
   getList(filters) {
-    return axios.get(API_URL + 'ao', filters);
+    camelize(esc(camelize()));
+    const esc = encodeURIComponent;
+    const query = Object.keys(filters).map(k => esc(camelize(k) ) + '=' + filters[k]).join('&');
+
+    return axios({method: "get", url: API_URL + 'ao?' + query});
   }
 }
-

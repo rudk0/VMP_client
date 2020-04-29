@@ -1,8 +1,9 @@
 import React from "react";
 import {cn} from '@bem-react/classname'
 import './KP.scss';
-import Select from 'react-select';
+import {Sel as Select} from "../common/Select/Select";
 import {Link} from "react-router-dom";
+import {Button} from "../common/Button/Button";
 
 
 const options = [
@@ -16,19 +17,17 @@ const options = [
 const kpCN = cn('kp');
 export const KP = () => {
     return (<div className={kpCN('container')}>
-            <h2 className={kpCN('label')}>Создание коммерческого предложения</h2>
-            <form method={'post'}>
-                <div className={kpCN('list-container')}>
-                    <label className={kpCN('label1')}>Тип объекта:
-                        <Select options = {options} defaultValue={options[0]} className={kpCN('select')}/>
-                    </label>
-                </div>
-                <Link to={"/main"}>
-                    <button className={kpCN('btn')}>Отмена</button>
-                </Link>
-                <button type="submit" className={kpCN('btn2')}>Сформировать список</button>
-            </form>
-        </div>
+          <h2 className={kpCN('label')}>Создание КП</h2>
+          <form >
+              <div className={kpCN('list-container')}>
+                  <Select label={"Тип объекта:"} name="mi_type_id" options={options} />
+              </div>
+              <Link to={"/main"}>
+                  <Button variant="discard">Отмена</Button>
+              </Link>
+              <Button type="submit" variant="submit">Сформировать список</Button>
+          </form>
+      </div>
     )
 
 };
