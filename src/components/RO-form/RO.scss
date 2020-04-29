@@ -4,18 +4,18 @@
   &-container{
     display:block;
     margin: 120px auto auto;
-    background: #f3f3f3;
+    background: $beige;
     padding: 10px;
-    box-shadow: #181818;
+    box-shadow: $dark-grey;
     width: 700px;
   }
   &-label{
-    color: #555555;
+    color: $grey2;
     margin-bottom: 130px;
     margin-top: 30px;
   }
   &-label1{
-    color: #555555;
+    color: $grey2;
     flex: 270px;
     margin: 5px;
     //margin-left: -15px;

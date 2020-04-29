@@ -1,6 +1,7 @@
+@import "src/colors";
 .select{
   &-label{
-    color: #555555;
+    color: $grey2;
     flex: 270px;
     margin: 5px;
   }

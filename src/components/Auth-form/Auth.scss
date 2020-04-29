@@ -9,11 +9,11 @@
     padding: 30px;
     width: 450px;
     height: 320px;
-    background: #f3f3f3;
-    box-shadow: #181818;
+    background: $beige;
+    box-shadow: $dark-grey;
   }
   &-label{
-    color: #555555;
+    color: $grey2;
     line-height: 1.2;
     text-transform: uppercase;
     margin-bottom:20px;
@@ -24,8 +24,8 @@
     width: 100%;
     margin-bottom: 15px;
     background: rgba(0, 0, 0, 0.3);
-    background-color: #fff;
-    border: 1px solid #e6e6e6;
+    background-color: $white;
+    border: 1px solid $white2;
     border-radius: 2px;
     padding: 10px;
     font-size: 13px;
@@ -35,11 +35,11 @@
     0 1px 1px rgba(255, 255, 255, 0.2);
   }
   &-login-btn{
-    color: #ffffff;
+    color: $white;
     text-align: center;
     vertical-align: middle;
-    background-color: #555555;
-    border: 2px solid #555555;
+    background-color: $grey2;
+    border: 2px solid $grey2;
     padding: 8px 14px;
     font-size: 15px;
     line-height: normal;

@@ -4,7 +4,7 @@
   &-container {
     height: 65px;
     width: 100%;
-    background: #181818;
+    background: $dark-grey;
     opacity: 0.9;
     display: flex;
 
@@ -19,11 +19,11 @@
     font-weight: lighter;
   }
   &-btn{
-    color: #ffffff;
+    color: $white;
     text-align: center;
     vertical-align: middle;
-    background-color: #555555;
-    border: 2px solid #555555;
+    background-color: $grey2;
+    border: 2px solid $grey2;
     padding: 9px 14px;
     max-height: 45px;
     font-size: 15px;

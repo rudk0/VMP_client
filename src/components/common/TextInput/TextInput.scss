@@ -1,6 +1,8 @@
+@import "src/colors";
+
 .text-input{
   &-label{
-    color: #555555;
+    color: $grey2;
     flex: 270px;
     margin: 10px;
   }
