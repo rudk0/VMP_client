@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import './AoTable.scss'
 import {useTable, useRowSelect} from 'react-table'
 import {cn} from "@bem-react/classname";

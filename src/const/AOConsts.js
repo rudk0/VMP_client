@@ -104,7 +104,7 @@ export const tableAOHeader = () => {
   }, {Header: "Формат размещения", accessor: "placing_format_id.format"}, {
     Header: "Этаж",
     accessor: "floor  "
-  }, , {Header: "Соседи", accessor: "neighbors"}, {Header: "Кол-во карманов", accessor: "pockets"}, {
+  },  {Header: "Соседи", accessor: "neighbors"}, {Header: "Кол-во карманов", accessor: "pockets"}, {
     Header: "Цена, руб",
     accessor: "price"
   }, {

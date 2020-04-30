@@ -17,6 +17,12 @@ export  const Main = () =>{
             <Link to={"/robuilder"}>
         <button className={mainCN('btn')} >Создать рекламный объект</button>
             </Link>
+            <Link to={'/users'}>
+                <button className={mainCN('btn')} >Управление пользователями</button>
+            </Link>
+            <Link to={'/db'}>
+                <button className={mainCN('btn')} >Управление Базой данных</button>
+            </Link>
         </div>
     </div>)
 

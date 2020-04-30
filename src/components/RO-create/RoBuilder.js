@@ -1,4 +1,4 @@
-import React, {isValidElement, useEffect, useState} from "react";
+import React, { useEffect, useState} from "react";
 import {cn} from '@bem-react/classname'
 import './RoBuilder.scss';
 import {Link} from 'react-router-dom';
@@ -22,6 +22,7 @@ import {
 } from "../../const/AOConsts";
 import {TextInput} from "../common/TextInput/TextInput";
 import {ROApi} from "../../api/ROAPI";
+import {Button} from "../common/Button/Button";
 
 const robuildCN = cn('robuild');
 export const RoBuilder = () => {
@@ -135,9 +136,9 @@ export const RoBuilder = () => {
         <TextInput onChange={(e) => handleInputChange(e)} type="text" name="client" label="Клиент:"/>
       </div>
       <Link to={"/main"}>
-        <button className={robuildCN('btn')}>Отмена</button>
+        <Button variant="discard">Отмена</Button>
       </Link>
-      <button type='submit' className={robuildCN('btn2')}>Создать объект</button>
+      <Button type="submit" variant="submit">Создать объект</Button>
     </form>
   </div>)
 

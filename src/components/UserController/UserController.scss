@@ -1,0 +1,30 @@
+@import "../../colors.scss";
+
+.user{
+  &-container{
+    display:block;
+    margin: 120px auto auto;
+    background: $beige;
+    padding: 10px;
+    box-shadow: $dark-grey;
+    width: 700px;
+  }
+  &-label{
+    color: $grey2;
+    margin-bottom: 130px;
+    margin-top: 30px;
+  }
+  &-label1{
+    color: $grey2;
+    flex: 270px;
+    margin: 5px;
+    //margin-left: -15px;
+  }
+
+  &-list-container{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+  }
+
+  }

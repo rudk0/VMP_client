@@ -3,5 +3,7 @@ export const Routes = {
   Main: '/main',
   Ro: '/ro',
   RoBuilder: '/robuilder',
-  KpBuilder: '/kpbuilder'
+  KpBuilder: '/kpbuilder',
+  Users: '/users',
+  db: '/db'
 }

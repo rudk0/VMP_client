@@ -76,7 +76,7 @@ export const RO = () => {
           <Select onChange={(e) => handleInputChange(e)} label={"Статус объекта:"} name="reservation_status"
                   options={reservedSelect}/>
           <Select onChange={(e) => handleInputChange(e)} label={"Сегмент:"} name="segment_id" options={segments}/>
-          <Select onChange={(e) => handleInputChange(e)} label={"Формат размещения:"} name="placing_format_id"
+          <Select onChange={(e) => handleInputChange(e)} label={"Формат размещения:"} name="format_id"
                   options={formats}/>
           <Select onChange={(e) => handleInputChange(e)} label={"Договор"} name="contract" options={offerSelect}/>
         </div>
