@@ -8,6 +8,7 @@ import {AoTable} from "../AO-table/AoTable";
 import {AOApi} from "../../api/AOAPI";
 import {error, notify} from "../../helpers/toaster-helper";
 import {tableAOHeader} from "../../const/AOConsts";
+import {Estimate} from "../Estimate/Estimate";
 
 
 
@@ -52,6 +53,7 @@ export const KP = () => {
           <Button type="submit" variant="submit">Выбрать из списка</Button>
         </div>
         <Button type="submit" variant="submit">Добавить данные из адресной программы</Button>
+        <Estimate></Estimate>
         <Link to={"/main"}>
           <Button variant="discard">Отмена</Button>
         </Link>
