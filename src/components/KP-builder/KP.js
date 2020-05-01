@@ -9,6 +9,7 @@ import {AOApi} from "../../api/AOAPI";
 import {error, notify} from "../../helpers/toaster-helper";
 import {tableAOHeader} from "../../const/AOConsts";
 import {Estimate} from "../Estimate/Estimate";
+import {kpAPI} from "../../api/kpAPI";
 
 
 
@@ -30,6 +31,9 @@ export const KP = () => {
       }
     }, [data]
   )
+  const handleRoForm = (e) => {
+
+  }
   return (<div className={kpCN('container')}>
       <h2 className={kpCN('label')}>Создание КП</h2>
       <form>
@@ -48,9 +52,13 @@ export const KP = () => {
                      label="Дата создания:"/>
           <TextInput type="text" name="placing_format"
                      label="Формат:"/>
+                     <form onSubmit={(e) => {
+                       handleRoForm(e);
+                     } }>
           <AoTable data={data.data} columns={tableAOHeader()}/>
-
           <Button type="submit" variant="submit">Выбрать из списка</Button>
+                     </form>
+          {/*<Button type={"submit"} variant="submit">Добавить в адресную программу</Button>*/}
         </div>
         <Button type="submit" variant="submit">Добавить данные из адресной программы</Button>
         <Estimate></Estimate>
