@@ -7,14 +7,27 @@ import {USER_ACTION_TYPES} from "./userConstant";
 
 function* getUsers() {
   try {
-    console.log('jek')
     const response = yield UsersApi.getUsers();
     yield put(usersActions.setUsers(response.data));
   } catch (e) {
     error(e);
   }
 }
-function* sagas(){
-  yield all([takeLatest(USER_ACTION_TYPES.GET_USER_LIST, getUsers)]);
+
+function* getUser() {
+  try {
+   // const response = yield UsersApi.getUser();
+    yield put(usersActions.setUser(null))
+  } catch (e) {
+    error(e);
+  }
 }
-export const userSagas  = sagas;
+
+function* sagas() {
+  yield all([
+    takeLatest(USER_ACTION_TYPES.GET_USER_LIST, getUsers),
+    takeLatest(USER_ACTION_TYPES.GET_USER, getUser)
+  ]);
+}
+
+export const userSagas = sagas;

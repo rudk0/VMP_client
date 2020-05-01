@@ -5,5 +5,6 @@ export const Routes = {
   RoBuilder: '/robuilder',
   KpBuilder: '/kpbuilder',
   Users: '/users',
-  db: '/db'
+  db: '/db',
+  ProfileEdit: '/profile/edit'
 }

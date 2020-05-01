@@ -23,6 +23,9 @@ export  const Main = () =>{
             <Link to={'/db'}>
                 <button className={mainCN('btn')} >Управление Базой данных</button>
             </Link>
+            <Link to={'/profile/edit'}>
+                <button className={mainCN('btn')} >Управление учётной записью</button>
+            </Link>
         </div>
     </div>)
 

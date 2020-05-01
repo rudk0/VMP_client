@@ -8,5 +8,8 @@ export const UsersApi = {
   },
   deleteUser: async (id)=>{
     return axios.delete(API_URL +'user/' + id)
+  },
+  changePassword: async (id) =>{
+    return axios.put(API_URL + 'user/'+ id)
   }
 }
