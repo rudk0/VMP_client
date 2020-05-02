@@ -4,22 +4,21 @@ import {useTable, useRowSelect} from 'react-table'
 import {cn} from "@bem-react/classname";
 const tableCn = cn('table');
 const IndeterminateCheckbox = React.forwardRef(
-  ({indeterminate, ...rest}, ref) => {
+  ({indeterminate, onChange,row,  ...rest}, ref) => {
     const defaultRef = React.useRef()
     const resolvedRef = ref || defaultRef
 
     React.useEffect(() => {
       resolvedRef.current.indeterminate = indeterminate
     }, [resolvedRef, indeterminate])
-
     return (
       <>
-        <input type="checkbox" ref={resolvedRef} {...rest} />
+        <input type="checkbox" ref={resolvedRef} {...rest} onChange={ onChange ? (e => onChange(row)): null}/>
       </>
     )
   }
 )
-export const AoTable = ({columns, data}) => {
+export const AoTable = ({columns, data, onChange}) => {
   const {
     getTableProps,
     getTableBodyProps,
@@ -46,17 +45,17 @@ export const AoTable = ({columns, data}) => {
           ),
           // The cell can use the individual row's getToggleRowSelectedProps method
           // to the render a checkbox
-          Cell: ({row}) => (
+          Cell: ({row}) => {
+            return (
             <div>
-              <IndeterminateCheckbox {...row.getToggleRowSelectedProps()} />
+              <IndeterminateCheckbox {...row.getToggleRowSelectedProps()} onChange={onChange} row={row} />
             </div>
-          ),
+          )},
         },
         ...columns,
       ])
     }
   )
-
   return (
     <table {...getTableProps()} className={tableCn('container')}>
       <thead>

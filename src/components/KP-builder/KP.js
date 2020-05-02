@@ -14,8 +14,10 @@ import {Estimate} from "../Estimate/Estimate";
 
 const kpCN = cn('kp');
 export const KP = () => {
-
-  const [data, setData] = useState({data: [], loaded: false});
+  const handleChange  =(e) => {
+    console.log(e);
+  }
+  const [data, setData] = useState({data: [], loaded: false, selected: {}});
   useEffect(
     () => {
       if (!data.loaded) {
@@ -48,7 +50,8 @@ export const KP = () => {
                      label="Дата создания:"/>
           <TextInput type="text" name="placing_format"
                      label="Формат:"/>
-          <AoTable data={data.data} columns={tableAOHeader()}/>
+          <
+            AoTable data={data.data} columns={tableAOHeader()} onChange={e => handleChange(e)}/>
 
           <Button type="submit" variant="submit">Выбрать из списка</Button>
         </div>
