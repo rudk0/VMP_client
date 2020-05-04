@@ -8,16 +8,32 @@ import {AoTable} from "../AO-table/AoTable";
 import {AOApi} from "../../api/AOAPI";
 import {error, notify} from "../../helpers/toaster-helper";
 import {tableAOHeader} from "../../const/AOConsts";
-import {Estimate} from "../Estimate/Estimate";
 
 import {KPApi} from "../../api/KPAPI";
 import {EstimateTableHeader} from "../../const/EstimateConsts";
+import {fileSaver, KpCountMap, KpFormMap} from "../../helpers/kpHelper";
 
 
 const kpCN = cn('kp');
 export const KP = () => {
 
-  const [data, setData] = useState({selected: [], data: [], loaded: false, estimate: [] });
+  const [data, setData] = useState({selected: [], data: [], loaded: false, estimate: []});
+  const setDataInEstimate = (value, field, index) => {
+    let estimate = data.estimate[index];
+    estimate[field] = value;
+    const estimates = data.estimate;
+    estimates[index] = estimate;
+
+  }
+  const handleInputChange = (event) => {
+    const target = event.target;
+    let value = (target && target.value) || event.value;
+    const name = (target && target.name) || event.name;
+    setData({
+      ...data,
+      [name]: value
+    });
+  }
   const changeState = (e) => {
     if (e.isSelected) {
       setData(
@@ -61,39 +77,69 @@ export const KP = () => {
       <h2 className={kpCN('label')}>Создание КП</h2>
       <form onSubmit={e => e.preventDefault()}>
         <div className={kpCN('list-container')}>
-          <TextInput type="text" name="name"
+          <TextInput onChange={e => handleInputChange(e)} type="text" name="name"
                      label="Коммерческое предложение:"/>
-          <TextInput type="text" name="client"
+          <TextInput onChange={e => handleInputChange(e)} type="text" name="client"
                      label="Клиент:"/>
-          <TextInput type="text" name="brand"
+          <TextInput onChange={e => handleInputChange(e)} type="text" name="brand"
                      label="Бренд:"/>
-          <TextInput type="date" name="date_from"
+          <TextInput onChange={e => handleInputChange(e)} type="date" name="date_from"
                      label="Период с "/>
-          <TextInput type="date" name="date_to"
+          <TextInput onChange={e => handleInputChange(e)} type="date" name="date_to"
                      label=" до "/>
-          <TextInput type="date" name="creating_date"
+          <TextInput onChange={e => handleInputChange(e)} type="date" name="creating_date"
                      label="Дата создания:"/>
-          <TextInput type="text" name="placing_format"
+          <TextInput onChange={e => handleInputChange(e)} type="text" name="placing_format"
                      label="Формат:"/>
+          <TextInput onChange={e => handleInputChange(e)} type="text" name="b1_price"
+                     label="B1 Price"/>
           <AoTable data={data.data} columns={tableAOHeader()} changeState={e => changeState(e)}/>
 
           <Button type="submit" variant="submit" onClick={e => KPApi.formEstimate(data.selected).then((response) => {
-            console.log(response.data)
+            let thanks_polina = response.data.map((el) => {
+              const keys = Object.keys(el);
+              keys.forEach((item) => {
+                return el[item] = (el[item] === null) ? 0 : el[item];
+              })
+              return el;
+            })
+
             setData(state => {
               return {
                 ...state,
-                estimate: response.data
+                estimate: thanks_polina
               }
             })
           })}>Выбрать из списка</Button>
         </div>
         <Button type="submit" variant="submit">Добавить данные из адресной программы</Button>
-        <AoTable columns={EstimateTableHeader(setData)} data={data.estimate}/>
+        <AoTable columns={EstimateTableHeader(setDataInEstimate)} data={data.estimate}/>
         <Link to={"/main"}>
           <Button variant="discard">Отмена</Button>
         </Link>
-        <Button type="submit" variant="extra">Предварительный просмотр</Button>
-        <Button type="submit" variant="extra">Экспортировать КП в Excel</Button>
+        <Button type="submit" variant="extra" onClick={e => {
+          KPApi.preview(KpCountMap(data.estimate), data.b1_price).then((response) => {
+            const estimate = response.data.estimateResponses
+            delete response.data.estimateResponses;
+            setData({
+              ...data,
+              ...response.data,
+              estimate: estimate
+            })
+          })
+        }}>Предварительный
+          просмотр</Button>
+        <Button type="submit" variant="extra" onClick={e=>{
+            KPApi.formKp(KpFormMap(data)).then((res)=>{
+                const link = document.createElement('a');
+                const url = URL.createObjectURL(new Blob([res.data]));
+                console.log(url);
+                link.href = url;
+                link.download = 'Kp.xls';
+                link.click();
+
+            });
+        }}>Экспортировать КП в Excel</Button>
       </form>
     </div>
   )

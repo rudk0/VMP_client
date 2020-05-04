@@ -55,7 +55,6 @@ export const AoTable = ({columns, data, changeState}) => {
       ])
     }
   )
-console.log(selectedRowIds);
   return (
     <table {...getTableProps()} className={tableCn('container')}>
       <thead>
