@@ -9,6 +9,10 @@ export const DbApi = {
   addCity: async (city) => {
     return axios.post(API_URL + 'city/', {city});
   },
+  changeCity: async (id, city) => {
+    console.log(city)
+    return axios.put(API_URL + 'city/'+ id, {city});
+  },
   addFormat: async (format) => {
     return axios.post(API_URL + 'formats/', {format})
   },
