@@ -1,11 +1,11 @@
 import React from "react";
 import {TextInput} from "../components/common/TextInput/TextInput";
 
-export const EstimateTableHeader = () => {
+export const EstimateTableHeader = (setData) => {
   return [{Header: "Регион", accessor: "city"},
     {Header: "Кол-во рекламных поверхностей", accessor: "ao_count"},
     {Header: "Стоимость размещения рекламного носителя за 1 месяц, руб., без НДС", accessor: "price",  Cell: (props) => (<TextInput/>)},
-    {Header: "Длительность размещения, мес.", accessor: "duration" ,  Cell: (props) => (<TextInput/>)},
+    {Header: "Длительность размещения, мес.", accessor: "duration" ,  Cell: (props) => (<TextInput />)},
     {Header: "Скидка объем + период", accessor: "discount",  Cell: (props) => (<TextInput/>)},
     {Header: "Стратегическая скидка", accessor: "strategic_discount",  Cell: (props) => (<TextInput/>)},
     {Header: "Стоимость размещения рекламного носителя за 1 месяц после скидок, руб., без НДС", accessor: "discount_price"},

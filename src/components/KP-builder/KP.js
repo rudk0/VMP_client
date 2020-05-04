@@ -11,12 +11,13 @@ import {tableAOHeader} from "../../const/AOConsts";
 import {Estimate} from "../Estimate/Estimate";
 
 import {KPApi} from "../../api/KPAPI";
+import {EstimateTableHeader} from "../../const/EstimateConsts";
 
 
 const kpCN = cn('kp');
 export const KP = () => {
 
-  const [data, setData] = useState({selected: [], data: [], loaded: false, estimate: []});
+  const [data, setData] = useState({selected: [], data: [], loaded: false, estimate: [] });
   const changeState = (e) => {
     if (e.isSelected) {
       setData(
@@ -86,9 +87,8 @@ export const KP = () => {
             })
           })}>Выбрать из списка</Button>
         </div>
-        <AoTable></AoTable>
         <Button type="submit" variant="submit">Добавить данные из адресной программы</Button>
-        <Estimate></Estimate>
+        <AoTable columns={EstimateTableHeader(setData)} data={data.estimate}/>
         <Link to={"/main"}>
           <Button variant="discard">Отмена</Button>
         </Link>
