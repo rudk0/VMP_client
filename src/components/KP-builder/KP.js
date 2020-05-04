@@ -10,31 +10,55 @@ import {error, notify} from "../../helpers/toaster-helper";
 import {tableAOHeader} from "../../const/AOConsts";
 import {Estimate} from "../Estimate/Estimate";
 
+import {KPApi} from "../../api/KPAPI";
 
 
 const kpCN = cn('kp');
 export const KP = () => {
-  const handleChange  =(e) => {
-    console.log(e);
+
+  const [data, setData] = useState({selected: [], data: [], loaded: false, estimate: []});
+  const changeState = (e) => {
+    if (e.isSelected) {
+      setData(
+        state => {
+          return {
+            ...state,
+            selected: state.selected.filter(item => item !== e.original.id)
+          }
+        }
+      )
+    } else {
+      setData(state => {
+        return {
+          ...state,
+          selected: [...state.selected, e.original.id]
+        }
+      });
+    }
   }
-  const [data, setData] = useState({data: [], loaded: false, selected: {}});
   useEffect(
     () => {
       if (!data.loaded) {
         AOApi.getList()
           .then((res) => {
             notify("List formed successfully");
-            setData({data: res.data, loaded: true})
+            setData(state => {
+              return {
+                ...state,
+                data: res.data,
+                loaded: true
+              }
+            })
             ;
           }).catch((err) => {
           error("Something went wrong" + err);
         })
       }
-    }, [data]
+    }, [data, data.selected]
   )
   return (<div className={kpCN('container')}>
       <h2 className={kpCN('label')}>Создание КП</h2>
-      <form>
+      <form onSubmit={e => e.preventDefault()}>
         <div className={kpCN('list-container')}>
           <TextInput type="text" name="name"
                      label="Коммерческое предложение:"/>
@@ -50,11 +74,19 @@ export const KP = () => {
                      label="Дата создания:"/>
           <TextInput type="text" name="placing_format"
                      label="Формат:"/>
-          <
-            AoTable data={data.data} columns={tableAOHeader()} onChange={e => handleChange(e)}/>
+          <AoTable data={data.data} columns={tableAOHeader()} changeState={e => changeState(e)}/>
 
-          <Button type="submit" variant="submit">Выбрать из списка</Button>
+          <Button type="submit" variant="submit" onClick={e => KPApi.formEstimate(data.selected).then((response) => {
+            console.log(response.data)
+            setData(state => {
+              return {
+                ...state,
+                estimate: response.data
+              }
+            })
+          })}>Выбрать из списка</Button>
         </div>
+        <AoTable></AoTable>
         <Button type="submit" variant="submit">Добавить данные из адресной программы</Button>
         <Estimate></Estimate>
         <Link to={"/main"}>

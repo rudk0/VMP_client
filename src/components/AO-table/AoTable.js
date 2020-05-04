@@ -4,21 +4,21 @@ import {useTable, useRowSelect} from 'react-table'
 import {cn} from "@bem-react/classname";
 const tableCn = cn('table');
 const IndeterminateCheckbox = React.forwardRef(
-  ({indeterminate, onChange,row,  ...rest}, ref) => {
+  ({indeterminate, row, changeState, ...rest}, ref) => {
     const defaultRef = React.useRef()
     const resolvedRef = ref || defaultRef
-
     React.useEffect(() => {
       resolvedRef.current.indeterminate = indeterminate
     }, [resolvedRef, indeterminate])
+
     return (
       <>
-        <input type="checkbox" ref={resolvedRef} {...rest} onChange={ onChange ? (e => onChange(row)): null}/>
+        <input type="checkbox" ref={resolvedRef} {...rest} onClick={e=>changeState ? changeState(row) : null} />
       </>
     )
   }
 )
-export const AoTable = ({columns, data, onChange}) => {
+export const AoTable = ({columns, data, changeState}) => {
   const {
     getTableProps,
     getTableBodyProps,
@@ -45,17 +45,17 @@ export const AoTable = ({columns, data, onChange}) => {
           ),
           // The cell can use the individual row's getToggleRowSelectedProps method
           // to the render a checkbox
-          Cell: ({row}) => {
-            return (
+          Cell: ({row}) => (
             <div>
-              <IndeterminateCheckbox {...row.getToggleRowSelectedProps()} onChange={onChange} row={row} />
+              <IndeterminateCheckbox {...row.getToggleRowSelectedProps()} row={row} changeState={changeState} />
             </div>
-          )},
+          ),
         },
         ...columns,
       ])
     }
   )
+console.log(selectedRowIds);
   return (
     <table {...getTableProps()} className={tableCn('container')}>
       <thead>
