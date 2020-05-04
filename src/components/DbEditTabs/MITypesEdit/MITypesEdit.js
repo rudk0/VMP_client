@@ -9,6 +9,7 @@ import {AoTable} from "../../AO-table/AoTable";
 import {editTypesTableHeaders} from "../dbEditConstants";
 import {DbApi} from "../../../api/dbEditAPI";
 import {notify} from "../../../helpers/toaster-helper";
+import {Link} from "react-router-dom";
 
 const typeEditCN = cn("type-edit")
 
@@ -40,6 +41,9 @@ export const TypeEdit = () => {
     <form onSubmit={e => onSubmit(e)}>
       <TextInput onChange={(e) => handleInputChange(e)} name={"type"} label={"Название Типа"}></TextInput>
       <Button type='submit' variant='submit'>Создать</Button>
+      <Link to={"/main"}>
+        <Button variant="discard">Назад</Button>
+      </Link>
     </form>
     <AoTable columns={editTypesTableHeaders} data={types}></AoTable>
 

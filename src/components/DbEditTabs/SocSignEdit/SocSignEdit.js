@@ -9,6 +9,7 @@ import {AoTable} from "../../AO-table/AoTable";
 import { editSignificanceTableHeaders} from "../dbEditConstants";
 import {DbApi} from "../../../api/dbEditAPI";
 import {notify} from "../../../helpers/toaster-helper";
+import {Link} from "react-router-dom";
 
 const significanceEditCN = cn("significance-edit")
 
@@ -40,6 +41,9 @@ export const SignificanceEdit = () => {
     <form onSubmit={e => onSubmit(e)}>
       <TextInput onChange={(e) => handleInputChange(e)} name={"significance"} label={"Название Формата"}></TextInput>
       <Button type='submit' variant='submit'>Создать</Button>
+      <Link to={"/main"}>
+        <Button variant="discard">Назад</Button>
+      </Link>
     </form>
     <AoTable columns={editSignificanceTableHeaders} data={significances}></AoTable>
 

@@ -9,6 +9,7 @@ import {TextInput} from "../../common/TextInput/TextInput";
 import {DbApi} from "../../../api/dbEditAPI";
 import {notify} from "../../../helpers/toaster-helper";
 import {Button} from "../../common/Button/Button";
+import {Link} from "react-router-dom";
 
 
 const editCityCn = cn('edit-city')
@@ -39,6 +40,9 @@ export const CityEdit = () => {
     <form onSubmit={e => onSubmit(e)}>
       <TextInput onChange={(e) => handleInputChange(e)} name={"city"} label={"Название города"}></TextInput>
       <Button type='submit' variant='submit'>Создать</Button>
+      <Link to={"/main"}>
+        <Button variant="discard">Назад</Button>
+      </Link>
     </form>
     <AoTable columns={editCityTableHeaders} data={cities}></AoTable>
 
