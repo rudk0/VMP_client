@@ -11,7 +11,7 @@ import {tableAOHeader} from "../../const/AOConsts";
 
 import {KPApi} from "../../api/KPAPI";
 import {EstimateTableHeader} from "../../const/EstimateConsts";
-import {fileSaver, KpCountMap, KpFormMap} from "../../helpers/kpHelper";
+import {KpCountMap, KpFormMap} from "../../helpers/kpHelper";
 
 
 const kpCN = cn('kp');
@@ -75,7 +75,6 @@ export const KP = () => {
   )
   return (<div className={kpCN('container')}>
       <h2 className={kpCN('label')}>Создание КП</h2>
-      <form onSubmit={e => e.preventDefault()}>
         <div className={kpCN('list-container')}>
           <TextInput onChange={e => handleInputChange(e)} type="text" name="name"
                      label="Коммерческое предложение:"/>
@@ -112,7 +111,6 @@ export const KP = () => {
             })
           })}>Выбрать из списка</Button>
         </div>
-        <Button type="submit" variant="submit">Добавить данные из адресной программы</Button>
         <AoTable columns={EstimateTableHeader(setDataInEstimate)} data={data.estimate}/>
         <Link to={"/main"}>
           <Button variant="discard">Отмена</Button>
@@ -129,18 +127,14 @@ export const KP = () => {
           })
         }}>Предварительный
           просмотр</Button>
-        <Button type="submit" variant="extra" onClick={e=>{
-            KPApi.formKp(KpFormMap(data)).then((res)=>{
-                const link = document.createElement('a');
-                const url = URL.createObjectURL(new Blob([res.data]));
-                console.log(url);
-                link.href = url;
-                link.download = 'Kp.xls';
-                link.click();
-
-            });
+        <Button type="submit" variant="extra" onClick={e => {
+          KPApi.formKp(KpFormMap(data)).then((res) => {
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(new Blob([res.data]));
+            link.download = `${data.name}.xls`;
+            link.click();
+          });
         }}>Экспортировать КП в Excel</Button>
-      </form>
     </div>
   )
 
