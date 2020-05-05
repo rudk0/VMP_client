@@ -3,6 +3,10 @@ import React from "react";
 import {aoActions} from "../../redux/ao/aoSlice";
 import {DbApi} from "../../api/dbEditAPI";
 import {TextInput} from "../common/TextInput/TextInput";
+import '../common/Button/Button.scss'
+import {cn} from "@bem-react/classname";
+
+const btnCN = cn('btn');
 
 export const editCityTableHeaders = [
   {Header: "Город", accessor: "city"},
@@ -13,7 +17,7 @@ export const editCityTableHeaders = [
   },
   {
     Header: 'Удаление', accessor: 'id',
-    Cell: ({value}) => (<button onClick={(e) => DbApi.deleteCity(value)
+    Cell: ({value}) => (<button className={btnCN('delete')} onClick={(e) => DbApi.deleteCity(value)
       .then((data) => store.dispatch(aoActions.getCities()))}>Удалить</button>)
   }
 
@@ -27,7 +31,7 @@ export const editFormatsTableHeaders = [
   },
   {
     Header: 'Удаление', accessor: 'id',
-    Cell: ({value}) => (<button onClick={(e) => DbApi.deleteFormat(value)
+    Cell: ({value}) => (<button className={btnCN('delete')} onClick={(e) => DbApi.deleteFormat(value)
       .then((data) => store.dispatch(aoActions.getFormats()))}>Удалить</button>)
 
   }
@@ -41,7 +45,7 @@ export const editTypesTableHeaders = [
   },
   {
     Header: 'Удаление', accessor: 'id',
-    Cell: ({value}) => (<button onClick={(e) => DbApi.deleteTypes(value)
+    Cell: ({value}) => (<button className={btnCN('delete')} onClick={(e) => DbApi.deleteTypes(value)
       .then((data) => store.dispatch(aoActions.getTypes()))}>Удалить</button>)
   }
 ]
@@ -54,7 +58,7 @@ export const editSegmentsTableHeaders = [
   },
   {
     Header: 'Удаление', accessor: 'id',
-    Cell: ({value}) => (<button onClick={(e) => DbApi.deleteSegment(value)
+    Cell: ({value}) => (<button className={btnCN('delete')} onClick={(e) => DbApi.deleteSegment(value)
       .then((data) => store.dispatch(aoActions.getSegments()))}>Удалить</button>)
   }
 ]
@@ -67,7 +71,7 @@ export const editSignificanceTableHeaders = [
   },
   {
     Header: 'Удаление', accessor: 'id',
-    Cell: ({value}) => (<button onClick={(e) => DbApi.deleteSignificance(value)
+    Cell: ({value}) => (<button className={btnCN('delete')} onClick={(e) => DbApi.deleteSignificance(value)
       .then((data) => store.dispatch(aoActions.getSignificance()))}>Удалить</button>)
   }
 ]

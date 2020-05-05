@@ -1,13 +1,22 @@
 @import "src/colors";
 
 .text-input{
+  &-container{
+    display: inline;
+  }
   &-label{
     color: $grey2;
-    flex: 270px;
-    margin: 10px;
   }
   &-input{
-    padding: 5px;
+    margin-left: 10px;
+    padding: 8px 16px;
+    line-height: 25px;
+    font-weight: 500;
+    border-radius: 6px;
+    color: $grey2;
+    border: 1px solid $text-input;
+    background: $white;
+    transition: border .3s ease;
 
   }
 }
