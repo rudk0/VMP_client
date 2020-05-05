@@ -1,11 +1,23 @@
+@import "src/colors";
+
 .table {
   &-container {
-
+    background: $white2;
     margin: 20px auto ;
   }
 }
+th {
+  color: $white;
+  background-color: $dark-purple;
+}
+td {
+  color: $table1;
+  border-bottom: 1px solid $table2;
+}
+th, td {
+  padding: 10px;
+}
 
-td, th {
-  border: 1px solid black;
-  padding: 10px 10px
+tr:nth-child(odd) {
+  background-color: $table2;
 }

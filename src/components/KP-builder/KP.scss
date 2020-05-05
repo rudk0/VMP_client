@@ -1,28 +1,21 @@
 @import "../../colors.scss";
 
-.kp{
-  &-container{
-    display:block;
-    margin: auto;
-    margin-top: 120px;
-    background: $beige;
-    padding: 10px;
-    box-shadow: $dark-grey ;
-    width: 700px;
-  }
+.kp {
   &-label{
     color: $grey2;
-    margin-bottom: 130px;
+    margin-bottom:30px;
     margin-top: 30px;
   }
-  &-label1{
-    color: $grey2;
-    flex: 270px;
-    margin: 5px;
-    //margin-left: -15px;
+  &-container {
+    display: block;
+    margin: 30px auto auto;
+    background: $beige;
+    padding: 16px;
+    box-shadow: $dark-grey;
+    width: 1000px;
   }
 
-  &-list-container{
+  &-list-container {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;

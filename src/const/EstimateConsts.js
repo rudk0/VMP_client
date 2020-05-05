@@ -29,7 +29,9 @@ export const EstimateTableHeader = (setData) => {
       accessor: "discount_price"
     },
     {Header: "Итого, бюджет, руб., без НДС", accessor: "final_price"},
-    // {Header: "Трафик (посещения)", accessor: "traffic"},
+    {Header: "Трафик (посещения)", accessor: "visits_traffic",
+      Cell: (props) => (<TextInput type="number"  onChange={e => setData(parseInt(e.target.value), 'visits_traffic', props.row.index)}/>)
+      },
     {
       Header: "OTS (контакты)",
       accessor: "ots_contacts",

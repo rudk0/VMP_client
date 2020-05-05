@@ -22,4 +22,11 @@
     border: 1px solid $dark-grey;
     color: $dark-grey;
   }
+  &-delete{
+    padding: 5px 20px;
+    background: $red;
+    border-radius: 5px;
+    color: $white;
+    border: none;
+  }
 }
