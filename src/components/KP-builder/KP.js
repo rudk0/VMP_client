@@ -76,22 +76,28 @@ export const KP = () => {
   return (<div className={kpCN('container')}>
       <h2 className={kpCN('label')}>Создание КП</h2>
         <div className={kpCN('list-container')}>
+          <div className={kpCN('line')}>
           <TextInput onChange={e => handleInputChange(e)} type="text" name="name"
                      label="Коммерческое предложение:"/>
           <TextInput onChange={e => handleInputChange(e)} type="text" name="client"
                      label="Клиент:"/>
           <TextInput onChange={e => handleInputChange(e)} type="text" name="brand"
                      label="Бренд:"/>
+          </div>
+          <div className={kpCN('line')}>
           <TextInput onChange={e => handleInputChange(e)} type="date" name="date_from"
                      label="Период с "/>
           <TextInput onChange={e => handleInputChange(e)} type="date" name="date_to"
                      label=" до "/>
           <TextInput onChange={e => handleInputChange(e)} type="date" name="creating_date"
                      label="Дата создания:"/>
+          </div>
+          <div className={kpCN('line')}>
           <TextInput onChange={e => handleInputChange(e)} type="text" name="placing_format"
                      label="Формат:"/>
           <TextInput onChange={e => handleInputChange(e)} type="text" name="b1_price"
                      label="B1 Price"/>
+          </div>
           <AoTable data={data.data} columns={tableAOHeader()} changeState={e => changeState(e)}/>
 
           <Button type="submit" variant="submit" onClick={e => KPApi.formEstimate(data.selected).then((response) => {

@@ -14,7 +14,12 @@
     box-shadow: $dark-grey;
     width: 1200px;
   }
-
+  &-line{
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 5px;
+    //border: solid 1px red;
+  }
   &-list-container {
     display: flex;
     flex-flow: row wrap;

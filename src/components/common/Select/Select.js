@@ -12,11 +12,11 @@ export const Sel = props => {
       textAlign: 'left'
     }),
   }
-  return (<label className={selectCN('label')}>{label}
+  return(<div className={selectCN('container')}><label className={selectCN('label')}>{label}</label>
       <Select name={name} onChange={(e) => {
         e.name=name;
         onChange(e)
       }} styles={customStyles} options={options} defaultValue={options.filter(o => o.value === value)} className={selectCN('item')}/>
-    </label>
+    </div>
   );
 };

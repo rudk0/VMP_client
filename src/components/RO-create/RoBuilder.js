@@ -79,6 +79,7 @@ export const RoBuilder = () => {
       handleRoForm(e);
     }}>
       <div className={robuildCN('list-container')}>
+        <div className={robuildCN("line")}>
         <Select onChange={(e) => handleInputChange(e)} label={"Город:"} name="city_id" value={roState.city_id}
                 options={cities}/>
         <Select onChange={(e) => handleInputChange(e)} label={"Тип объекта:"} name="mi_type_id"
@@ -86,21 +87,31 @@ export const RoBuilder = () => {
         <Select onChange={(e) => handleInputChange(e)} label={"Социальная значимость:"} name="mi_id"
                 value={roState.mi_id}
                 options={significance}/>
+        </div>
+        <div className={robuildCN("line")}>
         <TextInput onChange={(e) => handleInputChange(e)} type="text" name="name" value={roState.name}
                    label="Название объекта:"/>
         <TextInput onChange={(e) => handleInputChange(e)} type="text" name="address" value={roState.address}
                    label="Адрес объекта:"/>
-        <Select onChange={(e) => handleInputChange(e)} label={"Этаж:"} name="floor" value={roState.floor}
-                options={floorSelect}/>
+          <Select onChange={(e) => handleInputChange(e)} label={"Этаж:"} name="floor" value={roState.floor}
+                  options={floorSelect}/>
+        </div>
+        <div className={robuildCN("line")}>
+
+        <Select onChange={(e) => handleInputChange(e)} label={"Соседи:"} value={roState.neighbors} name="neighbors"
+                options={neighborsSelect}/>
+
         <Select onChange={(e) => handleInputChange(e)} label={"Формат размещения:"} value={roState.placing_format_id}
                 name="placing_format_id"
                 options={formats}/>
-        <Select onChange={(e) => handleInputChange(e)} label={"Соседи:"} value={roState.neighbors} name="neighbors"
-                options={neighborsSelect}/>
+
         <Select onChange={(e) => handleInputChange(e)} label={"Возможность размещения:"}
                 value={roState.possibility_of_placement}
                 name="possibility_of_placement"
                 options={possibilitySelect}/>
+        </div>
+        <div className={robuildCN("line")}>
+
         <TextInput onChange={(e) => handleInputChange(e)} type="text" name="place_description" label="Описанние места:"
                    value={roState.place_description}/>
         <TextInput onChange={(e) => handleInputChange(e)} type="text" name="specialist_description"
@@ -108,18 +119,27 @@ export const RoBuilder = () => {
                    value={roState.specialist_description}/>
         <Select onChange={(e) => handleInputChange(e)} label={"Сегмент:"} name="segment_id" options={segments}
                 value={roState.segment_id}/>
+        </div>
+        <div className={robuildCN("line")}>
+
         <Select onChange={(e) => handleInputChange(e)} label={"Подсегмент 1:"} name="subsegment1_id"
                 options={segments} value={roState.subsegment1_id}/>
         <Select onChange={(e) => handleInputChange(e)} label={"Подсегмент 2:"} name="subsegment2_id"
                 options={segments} value={roState.subsegment2_id}/>
         <Select onChange={(e) => handleInputChange(e)} label={"Подсегмент 3:"} name="subsegment3_id"
                 options={segments} value={roState.subsegment3_id}/>
-        <Select onChange={(e) => handleInputChange(e)} label={"Наличие кармана (кол-во):"} name="pockets"
+        </div>
+          <div className={robuildCN("line")}>
+
+          <Select onChange={(e) => handleInputChange(e)} label={"Наличие кармана (кол-во):"} name="pockets"
                 options={pocketSelect} value={roState.pockets}/>
         <TextInput onChange={(e) => handleInputChange(e)} type="number" name="price" label="Закупочная цена (рубли):"
                    value={roState.price}/>
         <TextInput onChange={(e) => handleInputChange(e)} type="text" name="contract" label="Договор:"
                    value={roState.contract}/>
+          </div>
+        <div className={robuildCN("line")}>
+
         <label className={robuildCN('label1')}>Комментарии:
           <textarea onChange={(e) => handleInputChange(e)} name="comments" value={roState.comments}/>
         </label>
@@ -134,6 +154,7 @@ export const RoBuilder = () => {
           <input onChange={(e) => handleInputChange(e)} type="date" name="date_to" value={roState.date_to}/>
         </label>
         <TextInput onChange={(e) => handleInputChange(e)} type="text" name="client" label="Клиент:"/>
+        </div>
       </div>
       <Link to={"/main"}>
         <Button variant="discard">Отмена</Button>

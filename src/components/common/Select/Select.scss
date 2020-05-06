@@ -1,9 +1,12 @@
 @import "src/colors";
 .select{
+  &-container{
+    display: flex;
+  }
   &-label{
     color: $grey2;
-    flex: 270px;
-    margin: 5px;
+    //flex: 270px;
+    margin: 15px 5px;
   }
   &-item{
     width: 260px;

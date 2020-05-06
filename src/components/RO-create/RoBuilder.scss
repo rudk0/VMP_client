@@ -10,22 +10,20 @@
     box-shadow: $dark-grey;
     max-width: 1200px;
   }
+  &-line{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 30px;
+    //border: solid 1px red;
+  }
   &-label{
     color: $grey2;
     margin-bottom: 130px;
     margin-top: 30px;
   }
-  &-label1{
-    color: $grey2;
-    flex: 270px;
-    margin: 10px;
-  }
-  input{
-    padding: 5px;
-  }
   &-list-container{
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: column;
     justify-content: space-between;
   }
 }

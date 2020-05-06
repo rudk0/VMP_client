@@ -2,7 +2,7 @@
 
 .text-input{
   &-container{
-    display: inline;
+    display: flex;
   }
   &-label{
     color: $grey2;
@@ -17,6 +17,6 @@
     border: 1px solid $text-input;
     background: $white;
     transition: border .3s ease;
-
+    height: 40px;
   }
 }
