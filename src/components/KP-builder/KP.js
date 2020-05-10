@@ -98,7 +98,7 @@ export const KP = () => {
           <TextInput onChange={e => handleInputChange(e)} type="text" name="b1_price"
                      label="B1 Price"/>
           </div>
-          <AoTable data={data.data} columns={tableAOHeader()} changeState={e => changeState(e)}/>
+          <AoTable data={data.data} columns={tableAOHeader()} changeState={e => changeState(e)} checkbox={true}/>
 
           <Button type="submit" variant="submit" onClick={e => KPApi.formEstimate(data.selected).then((response) => {
             let thanks_polina = response.data.map((el) => {

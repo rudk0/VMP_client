@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 
 const mainCN = cn('main');
 export const Main = () =>{
-
     return(<div className={mainCN('container')}>
                 <h2 className={mainCN('label')}>Главная страница</h2>
                 <div className={mainCN('btn-container')}>

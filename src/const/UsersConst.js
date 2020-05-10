@@ -15,8 +15,11 @@ export const usersTableHeader = () => {
     accessor: "cities.city"
   }, {
     Header: 'Удаление', accessor: 'id',
-    Cell: ({value}) => (<button className={btnCN('delete')} onClick={(e) => UsersApi.deleteUser(value)
-      .then((data) => store.dispatch(usersActions.getUsers()))}>Удалить</button>)
+    Cell: ({value}) => (<button className={btnCN('delete')} onClick={()=>{
+      if (window.confirm("Вы уверены, что хотите удалить?")){
+        UsersApi.deleteUser(value).then((data) => store.dispatch(usersActions.getUsers()))
+      }
+    }}>Удалить</button>)
   }
   ])
 }

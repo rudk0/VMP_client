@@ -18,7 +18,7 @@ const IndeterminateCheckbox = React.forwardRef(
     )
   }
 )
-export const AoTable = ({columns, data, changeState}) => {
+export const AoTable = ({columns, data, changeState, checkbox}) => {
   const {
     getTableProps,
     getTableBodyProps,
@@ -31,7 +31,7 @@ export const AoTable = ({columns, data, changeState}) => {
       data,
     },
     useRowSelect,
-    hooks => {
+    hooks => { checkbox &&
       hooks.visibleColumns.push(columns => [
         // Let's make a column for selection
         {

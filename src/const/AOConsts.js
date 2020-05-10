@@ -1,3 +1,5 @@
+
+import React from "react";
 export const offerSelect = [
   {
     value: true, label: 'Да',
@@ -132,18 +134,20 @@ export const ROBuilderInitialState = {
   subsegment3_id: null
 }
 
-export const RoInitialState = {}
+export const RoInitialState = {
+}
 export const tableAOHeader = () => {
   return [{Header: "Город", accessor: "city_id.city"}, {Header: "Объект", accessor: "name"}, {
     Header: "Объект фактический адрес",
     accessor: "address"
   }, {Header: "Формат размещения", accessor: "placing_format_id.format"}, {
     Header: "Этаж",
-    accessor: "floor  "
-  },  {Header: "Соседи", accessor: "neighbors"}, {Header: "Кол-во карманов", accessor: "pockets"}, {
+    accessor: "floor"
+  },  {Header: "Соседи", accessor: "neighbors", Cell: (props) =>(<div>{props.row.original.neighbors? "Есть" : "Нет" }</div>)}, {Header: "Кол-во карманов", accessor: "pockets"}, {
     Header: "Цена, руб",
     accessor: "price"
-  }, {
+  },{Header: "Возможность размещения", accessor: "possibility_of_placement", Cell: (props) =>(<div>{props.row.original.possibility_of_placement? "Есть" : "Нет" }</div>)},
+    {
     Header: "Описание места",
     accessor: "place_description"
   }]

@@ -17,6 +17,7 @@ export const RO = () => {
   const [roState, setRoState] = useState({filters: RoInitialState, data: [], requested: false});
   const handleRoForm = (e) => {
     e.preventDefault();
+    console.log(roState)
     AOApi.getList(roState.filters)
       .then((data) => {
         notify("List formed successfully");
@@ -59,6 +60,7 @@ export const RO = () => {
     setRoState({
         ...roState,
         filters: {
+          ...roState.filters,
           [name]: value
         }
       }
@@ -91,9 +93,9 @@ export const RO = () => {
         </Link>
         <Button type="submit" variant="submit">Сформировать список</Button>
       </form>
-
+      {roState.requested && <AoTable columns={tableAOHeader()} data={roState.data} checkbox={false}></AoTable>}
     </div>
-  {roState.requested && <AoTable columns={tableAOHeader()} data={roState.data}></AoTable>}
+
     </>
 
   )

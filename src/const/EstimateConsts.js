@@ -29,9 +29,9 @@ export const EstimateTableHeader = (setData) => {
       accessor: "discount_price"
     },
     {Header: "Итого, бюджет, руб., без НДС", accessor: "final_price"},
-    // {Header: "Трафик (посещения)", accessor: "visits_traffic",
-    //   Cell: (props) => (<TextInput type="number"  onChange={e => setData(parseInt(e.target.value), 'visits_traffic', props.row.index)}/>)
-    //   },
+    {Header: "Трафик (посещения)", accessor: "visits_traffic",
+      Cell: (props) => (<TextInput type="number"  onChange={e => setData(parseInt(e.target.value), 'visits_traffic', props.row.index)}/>)
+      },
     {
       Header: "OTS (контакты)",
       accessor: "ots_contacts",
@@ -43,7 +43,7 @@ export const EstimateTableHeader = (setData) => {
       Cell: (props) => (<TextInput type="number"  onChange={e => setData(parseInt(e.target.value), 'coverage_people', props.row.index)}/>)
     },
     {
-      Header: "ОРТ (руб.)",
+      Header: "CPT (руб.)",
       accessor: "cpt",
       Cell: (props) => (<TextInput type="number"  onChange={e => setData(parseInt(e.target.value), 'cpt', props.row.index)}/>)
     }

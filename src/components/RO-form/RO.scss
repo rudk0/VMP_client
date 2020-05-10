@@ -7,7 +7,7 @@
     background: $beige;
     padding: 10px;
     box-shadow: $dark-grey;
-    width: 900px;
+    width: 1100px;
   }
   &-label{
     color: $grey2;
@@ -16,7 +16,7 @@
   }
   &-line{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     margin: 10px 30px;
     //border: solid 1px red;
   }

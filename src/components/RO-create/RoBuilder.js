@@ -90,9 +90,9 @@ export const RoBuilder = () => {
         </div>
         <div className={robuildCN("line")}>
         <TextInput onChange={(e) => handleInputChange(e)} type="text" name="name" value={roState.name}
-                   label="Название объекта:"/>
+                   label="Название объекта:" required={true}/>
         <TextInput onChange={(e) => handleInputChange(e)} type="text" name="address" value={roState.address}
-                   label="Адрес объекта:"/>
+                   label="Адрес объекта:" required={true}/>
           <Select onChange={(e) => handleInputChange(e)} label={"Этаж:"} name="floor" value={roState.floor}
                   options={floorSelect}/>
         </div>
@@ -113,10 +113,10 @@ export const RoBuilder = () => {
         <div className={robuildCN("line")}>
 
         <TextInput onChange={(e) => handleInputChange(e)} type="text" name="place_description" label="Описание места:"
-                   value={roState.place_description}/>
+                   value={roState.place_description} required={true}/>
         <TextInput onChange={(e) => handleInputChange(e)} type="text" name="specialist_description"
                    label="Описание специалистов:"
-                   value={roState.specialist_description}/>
+                   value={roState.specialist_description} required={true}/>
         <Select onChange={(e) => handleInputChange(e)} label={"Сегмент:"} name="segment_id" options={segments}
                 value={roState.segment_id}/>
         </div>
@@ -134,9 +134,9 @@ export const RoBuilder = () => {
           <Select onChange={(e) => handleInputChange(e)} label={"Наличие кармана (кол-во):"} name="pockets"
                 options={pocketSelect} value={roState.pockets}/>
         <TextInput onChange={(e) => handleInputChange(e)} type="number" name="price" label="Закупочная цена (рубли):"
-                   value={roState.price}/>
+                   value={roState.price} required={true}/>
         <TextInput onChange={(e) => handleInputChange(e)} type="text" name="contract" label="Договор:"
-                   value={roState.contract}/>
+                   value={roState.contract}crequired={true}/>
           </div>
         <div className={robuildCN("line")}>
 
@@ -153,7 +153,7 @@ export const RoBuilder = () => {
         <label className={robuildCN('label1')}>по
           <input onChange={(e) => handleInputChange(e)} type="date" name="date_to" value={roState.date_to}/>
         </label>
-        <TextInput onChange={(e) => handleInputChange(e)} type="text" name="client" label="Клиент:"/>
+        <TextInput onChange={(e) => handleInputChange(e)} type="text" name="client" label="Клиент:" required={true}/>
         </div>
       </div>
       <Link to={"/main"}>
