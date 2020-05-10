@@ -66,19 +66,25 @@ export const RO = () => {
   }
 
   return (<><div className={roCN('container')}>
-      <h2 className={roCN('label')}>Формирование списка РО</h2>
+      <h2 className={roCN('label')}>Формирование списка рекламных объектов</h2>
       <form onSubmit={(e) => {
         handleRoForm(e);
       }}>
         <div className={roCN('list-container')}>
+          <div className={roCN('line')}>
           <Select onChange={(e) => handleInputChange(e)} label={"Тип объекта:"} name="mi_type_id" options={types}/>
           <Select onChange={(e) => handleInputChange(e)} label={"Город:"} name="city_id" options={cities}/>
+          </div>
+          <div className={roCN('line')}>
           <Select onChange={(e) => handleInputChange(e)} label={"Статус объекта:"} name="reservation_status"
                   options={reservedSelect}/>
           <Select onChange={(e) => handleInputChange(e)} label={"Сегмент:"} name="segment_id" options={segments}/>
+          </div>
+          <div className={roCN('line')}>
           <Select onChange={(e) => handleInputChange(e)} label={"Формат размещения:"} name="format_id"
                   options={formats}/>
           <Select onChange={(e) => handleInputChange(e)} label={"Договор"} name="contract" options={offerSelect}/>
+          </div>
         </div>
         <Link to={"/main"}>
           <Button variant="discard">Отмена</Button>

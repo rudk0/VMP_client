@@ -39,6 +39,42 @@ export const floorSelect = [
   },
   {
     value: 8, label: '8 этаж'
+  },
+  {
+    value: 9, label: '9 этаж'
+  },
+  {
+    value: 10, label: '10 этаж'
+  },
+  {
+    value: 11, label: '11 этаж'
+  },
+  {
+    value: 12, label: '12 этаж'
+  },
+  {
+    value: 13, label: '13 этаж'
+  },
+  {
+    value: 14, label: '14 этаж'
+  },
+  {
+    value: 15, label: '15 этаж'
+  },
+  {
+    value: 16, label: '16 этаж'
+  },
+  {
+    value: 17, label: '17 этаж'
+  },
+  {
+    value: 18, label: '18 этаж'
+  },
+  {
+    value: 19, label: '19 этаж'
+  },
+  {
+    value: 20, label: '20 этаж'
   }
 
 ]
@@ -91,9 +127,9 @@ export const ROBuilderInitialState = {
   reservation_status: true,
   segment_id: 0,
   specialist_description: "",
-  subsegment1_id: 0,
-  subsegment2_id: 0,
-  subsegment3_id: 0
+  subsegment1_id: null,
+  subsegment2_id: null,
+  subsegment3_id: null
 }
 
 export const RoInitialState = {}

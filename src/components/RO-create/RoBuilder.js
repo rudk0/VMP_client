@@ -112,7 +112,7 @@ export const RoBuilder = () => {
         </div>
         <div className={robuildCN("line")}>
 
-        <TextInput onChange={(e) => handleInputChange(e)} type="text" name="place_description" label="Описанние места:"
+        <TextInput onChange={(e) => handleInputChange(e)} type="text" name="place_description" label="Описание места:"
                    value={roState.place_description}/>
         <TextInput onChange={(e) => handleInputChange(e)} type="text" name="specialist_description"
                    label="Описание специалистов:"
