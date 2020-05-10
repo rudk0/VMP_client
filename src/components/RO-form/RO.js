@@ -6,7 +6,14 @@ import {useDispatch, useSelector} from "react-redux";
 import {aoActions} from "../../redux/ao/aoSlice";
 import {aoCitySelector, aoFormatsSelector, aoSegmentSelector, aoTypesSelector} from "../../redux/ao/aoSelectors";
 import {Sel as Select} from '../common/Select/Select'
-import {offerSelect, reservedSelect, RoInitialState, tableAOHeader} from "../../const/AOConsts";
+import {
+  floorSelect,
+  offerSelect,
+  pocketSelect,
+  reservedSelect,
+  RoInitialState,
+  tableAOHeader
+} from "../../const/AOConsts";
 import {Button} from "../common/Button/Button";
 import {error, notify} from "../../helpers/toaster-helper";
 import {AOApi} from "../../api/AOAPI";
@@ -85,7 +92,13 @@ export const RO = () => {
           <div className={roCN('line')}>
           <Select onChange={(e) => handleInputChange(e)} label={"Формат размещения:"} name="format_id"
                   options={formats}/>
-          <Select onChange={(e) => handleInputChange(e)} label={"Договор"} name="contract" options={offerSelect}/>
+          <Select onChange={(e) => handleInputChange(e)} label={"Договор:"} name="contract" options={offerSelect}/>
+          </div>
+          <div className={roCN('line')}>
+            <Select onChange={(e) => handleInputChange(e)} label={"Этаж:"} name="floor"
+                    options={floorSelect}/>
+            <Select onChange={(e) => handleInputChange(e)} label={"Наличие карманов:"} name="pockets"
+                    options={pocketSelect}/>
           </div>
         </div>
         <Link to={"/main"}>

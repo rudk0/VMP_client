@@ -155,7 +155,11 @@ export const RoBuilder = () => {
         </label>
         <TextInput onChange={(e) => handleInputChange(e)} type="text" name="client" label="Клиент:" required={true}/>
         </div>
+        <div className={robuildCN('line')}>
+          <TextInput type='file' name='photo' label='Выберете фото'></TextInput>
+        </div>
       </div>
+
       <Link to={"/main"}>
         <Button variant="discard">Отмена</Button>
       </Link>
