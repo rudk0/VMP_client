@@ -3,6 +3,8 @@
 .text-input{
   &-container{
     display: flex;
+    flex-direction: column;
+
   }
   &-label{
     color: $grey2;

@@ -39,7 +39,7 @@ export const KP = () => {
       setData(
         state => {
           return {
-            ...state,
+            ...data,
             selected: state.selected.filter(item => item !== e.original.id)
           }
         }
@@ -47,7 +47,7 @@ export const KP = () => {
     } else {
       setData(state => {
         return {
-          ...state,
+          ...data,
           selected: [...state.selected, e.original.id]
         }
       });
@@ -61,7 +61,7 @@ export const KP = () => {
             notify("List formed successfully");
             setData(state => {
               return {
-                ...state,
+                ...data,
                 data: res.data,
                 loaded: true
               }
@@ -111,7 +111,7 @@ export const KP = () => {
 
             setData(state => {
               return {
-                ...state,
+                ...data,
                 estimate: thanks_polina
               }
             })

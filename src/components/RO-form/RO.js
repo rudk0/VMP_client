@@ -43,7 +43,11 @@ export const RO = () => {
     dispatch(aoActions.getTypes());
     dispatch(aoActions.getCities());
     dispatch(aoActions.getFormats());
+
   }, [dispatch]);
+  useEffect(()=>{
+    window.scrollTo(0,document.body.scrollHeight);
+  }, [roState.data]);
   const types = useSelector(aoTypesSelector).map(item => {
     return {value: item.id, label: item.type}
   });

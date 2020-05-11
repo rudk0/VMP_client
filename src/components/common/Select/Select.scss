@@ -2,14 +2,13 @@
 .select{
   &-container{
     display: flex;
+    flex-direction: column;
   }
   &-label{
     color: $grey2;
     //flex: 270px;
-    margin: 15px 5px;
   }
   &-item{
     width: 260px;
-    margin: 10px;
   }
 }

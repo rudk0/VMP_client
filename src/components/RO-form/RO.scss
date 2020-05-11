@@ -16,8 +16,8 @@
   }
   &-line{
     display: flex;
-    justify-content: space-around;
-    margin: 10px 30px;
+    justify-content: space-between;
+    margin: 10px auto;
     //border: solid 1px red;
   }
   &-label1{
@@ -32,9 +32,8 @@
   }
 
   &-list-container{
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
+    width: 50%;
+    margin: auto;
   }
   &-btn{
     margin: 40px;
