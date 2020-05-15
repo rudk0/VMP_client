@@ -12,6 +12,7 @@ import {tableAOHeader} from "../../const/AOConsts";
 import {KPApi} from "../../api/KPAPI";
 import {EstimateTableHeader} from "../../const/EstimateConsts";
 import {KpCountMap, KpFormMap} from "../../helpers/kpHelper";
+import {NumberInput} from "../common/NumberInput/NumberInput";
 
 
 const kpCN = cn('kp');
@@ -101,18 +102,10 @@ export const KP = () => {
           <AoTable data={data.data} columns={tableAOHeader()} changeState={e => changeState(e)} checkbox={true}/>
 
           <Button type="submit" variant="submit" onClick={e => KPApi.formEstimate(data.selected).then((response) => {
-            let thanks_polina = response.data.map((el) => {
-              const keys = Object.keys(el);
-              keys.forEach((item) => {
-                return el[item] = (el[item] === null) ? 0 : el[item];
-              })
-              return el;
-            })
-
             setData(state => {
               return {
                 ...data,
-                estimate: thanks_polina
+                estimate: response.data
               }
             })
           })}>Выбрать из списка</Button>

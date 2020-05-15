@@ -21,6 +21,9 @@ const users = useSelector(usersSelector);
         <div className={userCN('list-container')}>
         <AoTable columns={usersTableHeader()} data={users}></AoTable>
         </div>
+      <Link to={"/userCreate"}>
+         <Button variant='submit'>Создать нового пользователя</Button>
+      </Link>
         <Link to={"/main"}>
           <Button variant="discard">Назад</Button>
         </Link>

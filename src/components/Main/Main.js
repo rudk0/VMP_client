@@ -24,6 +24,9 @@ export const Main = () =>{
             <Link to={'/db'}>
                 {localStorage.role==='ROLE_ADMIN' && <button className={mainCN('btn')} >Управление Базой данных</button>}
             </Link>
+                  <Link to={'/profile/edit'}>
+                    <button className={mainCN('btn')} >Изменение пароля</button>
+                  </Link>
         </div>
     </div>)};
 

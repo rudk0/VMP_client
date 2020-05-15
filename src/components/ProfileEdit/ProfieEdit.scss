@@ -1,0 +1,18 @@
+@import "src/colors";
+
+.profile-edit{
+  &-container{
+    display:block;
+    margin: 100px auto auto;
+    background: $beige;
+    padding: 10px;
+    box-shadow: $dark-grey;
+    width: 500px;
+    height: 400px;
+  }
+  &-label{
+    color: $grey2;
+    margin-bottom: 130px;
+    margin-top: 30px;
+  }
+}
