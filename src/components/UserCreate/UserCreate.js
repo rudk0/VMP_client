@@ -17,7 +17,7 @@ const userEditCN = cn('user-edit');
 export const UserCreate = () => {
   const [userState, setUserState] = useState(userInitialState);
   const options = [
-    { value: 'ROLE_ADMIN', label: 'Администратор' },
+    { value: 'admin', label: 'Администратор' },
     { value: 'ROLE_USER', label: 'Пользователь' }
   ]
   const dispatch = useDispatch();
