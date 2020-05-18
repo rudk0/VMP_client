@@ -11,5 +11,8 @@ export const UsersApi = {
   },
   changePassword: async (id) =>{
     return axios.put(API_URL + 'user/'+ id)
+  },
+  createUser: (user) => {
+    return axios.post(`${API_URL}api/auth/signup`, user);
   }
 }

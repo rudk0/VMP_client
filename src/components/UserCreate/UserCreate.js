@@ -8,11 +8,14 @@ import {TextInput} from "../common/TextInput/TextInput";
 import {useDispatch, useSelector} from "react-redux";
 import {aoActions} from "../../redux/ao/aoSlice";
 import {aoCitySelector} from "../../redux/ao/aoSelectors";
+import {userInitialState} from "../../const/UsersConst";
+import {error, notify} from "../../helpers/toaster-helper";
+import {UsersApi} from "../../api/UserAPI";
 
 const userEditCN = cn('user-edit');
 
 export const UserCreate = () => {
-
+  const [userState, setUserState] = useState(userInitialState);
   const options = [
     { value: 'ROLE_ADMIN', label: 'Администратор' },
     { value: 'ROLE_USER', label: 'Пользователь' }
@@ -24,9 +27,28 @@ export const UserCreate = () => {
   const cities = useSelector(aoCitySelector).map(item => {
     return {value: item.id, label: item.city}
   })
-function handleForm() {
-
-}
+  const handleForm = (e) => {
+    e.preventDefault();
+    UsersApi.createUser(userState)
+      .then((data) => {
+        notify("Object created successfully");
+        setUserState(userInitialState);
+      }).catch((err) => {
+      error("Something went wrong" + err);
+    })
+  }
+  const handleInputChange = (event) => {
+    const target = event.target;
+    let value = (target && target.value) || event.value;
+    const name = (target && target.name) || event.name;
+    if (target && typeof target.value === "boolean") {
+      value = target.value
+    }
+    setUserState({
+      ...userState,
+      [name]: value
+    });
+  }
   return (<div className={userEditCN('container')}>
       <h2 className={userEditCN('label')}>Создание пользователя</h2>
       <form onSubmit={(e) => {
@@ -35,19 +57,17 @@ function handleForm() {
         <div className={userEditCN('list-container')}>
           <div className={userEditCN('line')}>
 
-              <TextInput type="text" name="name"
+              <TextInput onChange={(e) => handleInputChange(e)} type="text" name="firstName"
                          label="Имя:" required={true}/>
-              <TextInput type="text" name="surname"
+              <TextInput onChange={(e) => handleInputChange(e)} type="text" name="lastName"
                          label="Фамилия:" required={true}/>
-            <TextInput type="text" name="address"
-                       label="Отчество:" required={true}/>
-              <TextInput type="text" name="address"
+              <TextInput onChange={(e) => handleInputChange(e)} type="text" name="login"
                          label="Логин:" required={true}/>
-              <Select label={"Город:"}
+              <Select onChange={(e) => handleInputChange(e)} label={"Город:"} name={"city_id"}
                       options={cities} className={userEditCN('select')}/>
-            <TextInput type="password" name="address"
+            <TextInput onChange={(e) => handleInputChange(e)} type="password" name="password"
                        label="Пароль:" required={true}/>
-            <Select label={"Роль:"}
+            <Select onChange={(e) => handleInputChange(e)} label={"Роль:"} name={"role"}
                     options={options} className={userEditCN('select')}/>
           </div>
         </div>

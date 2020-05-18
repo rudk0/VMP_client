@@ -23,3 +23,11 @@ export const usersTableHeader = () => {
   }
   ])
 }
+export const userInitialState = {
+  city_id: 1,
+  firstName: '',
+  lastName: "",
+  login: "",
+  role: "",
+  password: ""
+}
