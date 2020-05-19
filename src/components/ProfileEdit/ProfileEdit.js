@@ -8,13 +8,13 @@ import {error, notify} from "../../helpers/toaster-helper";
 import {UsersApi} from "../../api/UserAPI";
 const profileEditCn = cn('profile-edit')
 export const ProfileEdit = props => {
-  const [profileState, setState] = useState({password: '', id: null})
+  const [profileState, setState] = useState({password: ''})
   const onSubmit = e =>{
     e.preventDefault();
-    UsersApi.changePassword(profileState)
+    UsersApi.changePassword(profileState, localStorage.id)
       .then((data) => {
         notify("Object created successfully");
-        setState({password: '', id: null});
+        setState({password: ''});
       }).catch((err) => {
       error("Something went wrong" + err);
     })
@@ -23,7 +23,7 @@ export const ProfileEdit = props => {
   >
     <h2 className={profileEditCn('label')}>Изменение пароля</h2>
     <form onSubmit={e => onSubmit(e)}>
-    <TextInput onChange={e => setState({...profileState, password: e.target.value, id: localStorage.userId})} label={"Новый пароль: "} name="password" value={profileState.password}></TextInput>
+    <TextInput onChange={e => setState({...profileState, password: e.target.value})} label={"Новый пароль: "} name="password" value={profileState.password}></TextInput>
       <Link to={"/main"}>
         <Button variant="discard">Отмена</Button>
       </Link>

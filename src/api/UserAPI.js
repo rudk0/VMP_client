@@ -9,8 +9,8 @@ export const UsersApi = {
   deleteUser: async (id)=>{
     return axios.delete(API_URL +'user/' + id)
   },
-  changePassword: async (password) =>{
-    return axios.put(API_URL + 'updatePassword/'+ password.id+"/"+password.password);
+  changePassword: async (password, id) =>{
+    return axios.put(API_URL + 'updatePassword/'+ id+"/"+password.password);
   },
   createUser: (user) => {
     return axios.post(`${API_URL}api/auth/signup`, user);
