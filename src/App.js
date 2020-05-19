@@ -17,7 +17,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import {KP} from "./components/KP-builder/KP";
 import {UserController} from "./components/UserController/UserController";
 import {DbEdit} from "./components/DbEdit/DbEdit";
-import {ProfileEdit} from "./components/ProfileEdit/ProfileEdit";
+import {PasswordEdit} from "./components/ProfileEdit/PasswordEdit";
 import {UserCreate} from "./components/UserCreate/UserCreate";
 
 function App(props) {
@@ -34,7 +34,7 @@ function App(props) {
         <AuthorizedRoute path={Routes.Users} component={UserController} isAuthorized={isAuthorized} withNavigation/>
         <AuthorizedRoute path={Routes.Main} component={Main} isAuthorized={isAuthorized} withNavigation/>
         <AuthorizedRoute path={Routes.db} component={DbEdit} isAuthorized={isAuthorized} withNavigation/>
-        <AuthorizedRoute path={Routes.ProfileEdit} component={ProfileEdit} isAuthorized={isAuthorized} withNavigation/>
+        <AuthorizedRoute path={Routes.ProfileEdit} component={PasswordEdit} isAuthorized={isAuthorized} withNavigation/>
         <AuthorizedRoute path={Routes.UserCreate} component={UserCreate} isAuthorized={isAuthorized} withNavigation/>
         <Redirect to={Routes.Main}/>
       </Switch>
