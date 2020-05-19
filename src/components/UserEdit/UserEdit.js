@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {cn} from '@bem-react/classname'
-import './UserCreate.scss';
+import './UserEdit.scss';
 import {Sel as Select} from "../common/Select/Select";
 import {Link} from "react-router-dom";
 import {Button} from "../common/Button/Button";
@@ -12,9 +12,9 @@ import {userInitialState} from "../../const/UsersConst";
 import {error, notify} from "../../helpers/toaster-helper";
 import {UsersApi} from "../../api/UserAPI";
 
-const userCreateCN = cn('user-create');
+const userEditCN = cn('user-edit');
 
-export const UserCreate = () => {
+export const UserEdit = () => {
   const [userState, setUserState] = useState(userInitialState);
   const options = [
     { value: 'admin', label: 'Администратор' },
@@ -49,26 +49,26 @@ export const UserCreate = () => {
       [name]: value
     });
   }
-  return (<div className={userCreateCN('container')}>
-      <h2 className={userCreateCN('label')}>Создание пользователя</h2>
+  return (<div className={userEditCN('container')}>
+      <h2 className={userEditCN('label')}>Изменение пользователя</h2>
       <form onSubmit={(e) => {
         handleForm(e);
       }}>
-        <div className={userCreateCN('list-container')}>
-          <div className={userCreateCN('line')}>
+        <div className={userEditCN('list-container')}>
+          <div className={userEditCN('line')}>
 
-              <TextInput onChange={(e) => handleInputChange(e)} type="text" name="firstName"
-                         label="Имя:" required={true}/>
-              <TextInput onChange={(e) => handleInputChange(e)} type="text" name="lastName"
-                         label="Фамилия:" required={true}/>
-              <TextInput onChange={(e) => handleInputChange(e)} type="text" name="login"
-                         label="Логин:" required={true}/>
-              <Select onChange={(e) => handleInputChange(e)} label={"Город:"} name={"city_id"}
-                      options={cities} className={userCreateCN('select')}/>
+            <TextInput onChange={(e) => handleInputChange(e)} type="text" name="firstName"
+                       label="Имя:" required={true}/>
+            <TextInput onChange={(e) => handleInputChange(e)} type="text" name="lastName"
+                       label="Фамилия:" required={true}/>
+            <TextInput onChange={(e) => handleInputChange(e)} type="text" name="login"
+                       label="Логин:" required={true}/>
+            <Select onChange={(e) => handleInputChange(e)} label={"Город:"} name={"city_id"}
+                    options={cities} className={userEditCN('select')}/>
             <TextInput onChange={(e) => handleInputChange(e)} type="password" name="password"
                        label="Пароль:" required={true}/>
             <Select onChange={(e) => handleInputChange(e)} label={"Роль:"} name={"role"}
-                    options={options} className={userCreateCN('select')}/>
+                    options={options} className={userEditCN('select')}/>
           </div>
         </div>
         <Link to={"/users"}>

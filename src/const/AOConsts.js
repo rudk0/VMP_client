@@ -1,6 +1,7 @@
 
 import React from "react";
 export const offerSelect = [
+  {value: '', label: 'Все'},
   {
     value: true, label: 'Да',
   },
@@ -9,6 +10,7 @@ export const offerSelect = [
   }
 ]
 export const reservedSelect = [
+  {value: '', label: 'Все'},
   {
     value: true, label: 'Зарезервирован'
   },
@@ -18,6 +20,7 @@ export const reservedSelect = [
 
 ]
 export const floorSelect = [
+  {value: '', label: 'Все'},
   {
     value: 1, label: '1 этаж'
   },
@@ -81,6 +84,7 @@ export const floorSelect = [
 
 ]
 export const pocketSelect = [
+  {value: '', label: 'Все'},
   {
     value: 0, label: 'Нет карманов'
   },
@@ -92,6 +96,7 @@ export const pocketSelect = [
   }
 ]
 export const neighborsSelect = [
+  {value: '', label: 'Все'},
   {
     value: true, label: 'Да',
   },
@@ -100,6 +105,7 @@ export const neighborsSelect = [
   }
 ]
 export const possibilitySelect = [
+  {value: '', label: 'Все'},
   {
     value: true, label: 'Да',
   },

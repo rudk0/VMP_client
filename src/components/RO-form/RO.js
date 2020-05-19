@@ -20,8 +20,9 @@ import {AOApi} from "../../api/AOAPI";
 import {AoTable} from "../AO-table/AoTable";
 
 const roCN = cn('ro');
-export const RO = () => {
+export const RO = props => {
   const [roState, setRoState] = useState({filters: RoInitialState, data: [], requested: false});
+  const {changeState, isKp} = props;
   const handleRoForm = (e) => {
     e.preventDefault();
     console.log(roState)
@@ -48,19 +49,18 @@ export const RO = () => {
   useEffect(()=>{
     window.scrollTo(0,document.body.scrollHeight);
   }, [roState.data]);
-  const types = useSelector(aoTypesSelector).map(item => {
+  const types =[{value: '', label: 'Все'}, ... useSelector(aoTypesSelector).map(item => {
     return {value: item.id, label: item.type}
-  });
-  const cities = useSelector(aoCitySelector).map(item => {
+  })];
+  const cities = [{value: '', label: 'Все'}, ...useSelector(aoCitySelector).map(item => {
     return {value: item.id, label: item.city}
-  })
-  const formats = useSelector(aoFormatsSelector).map(item => {
+  })]
+  const formats =[ {value: '', label: 'Все'}, ... useSelector(aoFormatsSelector).map(item => {
     return {value: item.id, label: item.format}
-  })
-  const segments = useSelector(aoSegmentSelector).map(item => {
+  })]
+  const segments =[ {value: '', label: 'Все'}, ...useSelector(aoSegmentSelector).map(item => {
     return {value: item.id, label: item.segment}
-  })
-
+  })]
   const handleInputChange = (event) => {
     const target = event.target;
     let value = (target && target.value) || event.value;
@@ -68,50 +68,52 @@ export const RO = () => {
     if (target && typeof target.value === "boolean") {
       value = target.value
     }
+    let filters = {
+      ...roState.filters,
+      [name]: value
+    }
+    if (value===''){
+      delete filters[name];
+    }
     setRoState({
         ...roState,
-        filters: {
-          ...roState.filters,
-          [name]: value
-        }
+        filters
       }
     );
   }
 
-  return (<><div className={roCN('container')}>
-      <h2 className={roCN('label')}>Формирование списка рекламных объектов</h2>
+  return (<>
       <form onSubmit={(e) => {
         handleRoForm(e);
       }}>
         <div className={roCN('list-container')}>
           <div className={roCN('line')}>
-          <Select onChange={(e) => handleInputChange(e)} label={"Тип объекта:"} name="mi_type_id" options={types}/>
-          <Select onChange={(e) => handleInputChange(e)} label={"Город:"} name="city_id" options={cities}/>
+          <Select onChange={(e) => handleInputChange(e)} label={"Тип объекта:"} name="mi_type_id" options={types} value={types[0]}/>
+          <Select onChange={(e) => handleInputChange(e)} label={"Город:"} name="city_id" options={cities} value={cities[0]}/>
           </div>
           <div className={roCN('line')}>
-          <Select onChange={(e) => handleInputChange(e)} label={"Статус объекта:"} name="reservation_status"
+          <Select onChange={(e) => handleInputChange(e)} label={"Статус объекта:"} name="reservation_status" value={reservedSelect[0]}
                   options={reservedSelect}/>
-          <Select onChange={(e) => handleInputChange(e)} label={"Сегмент:"} name="segment_id" options={segments}/>
+          <Select onChange={(e) => handleInputChange(e)} label={"Сегмент:"} name="segment_id" options={segments} value={segments[0]}/>
           </div>
           <div className={roCN('line')}>
-          <Select onChange={(e) => handleInputChange(e)} label={"Формат размещения:"} name="format_id"
+          <Select onChange={(e) => handleInputChange(e)} label={"Формат размещения:"} name="format_id" value={formats[0]}
                   options={formats}/>
-          <Select onChange={(e) => handleInputChange(e)} label={"Договор:"} name="contract" options={offerSelect}/>
+          <Select onChange={(e) => handleInputChange(e)} label={"Договор:"} name="contract" options={offerSelect} value={offerSelect[0]}/>
           </div>
           <div className={roCN('line')}>
-            <Select onChange={(e) => handleInputChange(e)} label={"Этаж:"} name="floor"
+            <Select onChange={(e) => handleInputChange(e)} label={"Этаж:"} name="floor" value={floorSelect[0]}
                     options={floorSelect}/>
-            <Select onChange={(e) => handleInputChange(e)} label={"Наличие карманов:"} name="pockets"
+            <Select onChange={(e) => handleInputChange(e)} label={"Наличие карманов:"} name="pockets" value={pocketSelect[0]}
                     options={pocketSelect}/>
           </div>
         </div>
         <Link to={"/main"}>
-          <Button variant="discard">Отмена</Button>
+          {!isKp && <Button variant="discard">Отмена</Button>}
         </Link>
         <Button type="submit" variant="submit">Сформировать список</Button>
       </form>
-      {roState.requested && <AoTable columns={tableAOHeader()} data={roState.data} checkbox={false}></AoTable>}
-    </div>
+      {roState.requested && <AoTable columns={tableAOHeader()} data={roState.data} checkbox={isKp} changeState={typeof changeState === "function" && (e => changeState(e))}></AoTable>}
 
     </>
 

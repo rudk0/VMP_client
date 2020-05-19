@@ -8,4 +8,5 @@ export const Routes = {
   db: '/db',
   ProfileEdit: '/profile/edit',
   UserCreate: '/userCreate',
+  UserEdit: '/userEdit'
 }

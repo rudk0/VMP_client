@@ -13,6 +13,7 @@ import {KPApi} from "../../api/KPAPI";
 import {EstimateTableHeader} from "../../const/EstimateConsts";
 import {KpCountMap, KpFormMap} from "../../helpers/kpHelper";
 import {NumberInput} from "../common/NumberInput/NumberInput";
+import {RO} from "../RO-form/RO";
 
 
 const kpCN = cn('kp');
@@ -99,18 +100,18 @@ export const KP = () => {
           <TextInput onChange={e => handleInputChange(e)} type="text" name="b1_price"
                      label="B1 Price"/>
           </div>
-          <AoTable data={data.data} columns={tableAOHeader()} changeState={e => changeState(e)} checkbox={true}/>
+          <RO changeState={changeState} isKp={true}/>
 
-          <Button type="submit" variant="submit" onClick={e => KPApi.formEstimate(data.selected).then((response) => {
+          { data.selected.length>0 && <Button type="submit" variant="submit" onClick={e => KPApi.formEstimate(data.selected).then((response) => {
             setData(state => {
               return {
                 ...data,
                 estimate: response.data
               }
             })
-          })}>Выбрать из списка</Button>
+          })}>Выбрать из списка</Button>}
         </div>
-        <AoTable columns={EstimateTableHeader(setDataInEstimate)} data={data.estimate}/>
+      <AoTable columns={EstimateTableHeader(setDataInEstimate)} data={data.estimate}/>
         <Link to={"/main"}>
           <Button variant="discard">Отмена</Button>
         </Link>

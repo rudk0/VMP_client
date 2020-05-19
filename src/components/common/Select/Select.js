@@ -16,7 +16,7 @@ export const Sel = props => {
       <Select name={name} onChange={(e) => {
         e.name = name;
         typeof onChange === "function" && onChange(e)
-      }} styles={customStyles} options={options} defaultValue={options.filter(o => o.value === value)}
+      }} styles={customStyles} options={options} defaultValue={value}
               className={selectCN('item')}/>
     </div>
   );

@@ -7,7 +7,6 @@ import {AuthorizedRoute} from "./components/AuthorizedRoute";
 import {Routes} from "./const/Routes";
 import {Auth} from "./components/Auth-form/Auth";
 import {Main} from "./components/Main/Main";
-import {RO} from "./components/RO-form/RO";
 import {connect} from "react-redux";
 import {isAuthorizedSelector} from "./redux/auth/authSelectors";
 import {RoBuilder} from "./components/RO-create/RoBuilder";
@@ -19,6 +18,8 @@ import {UserController} from "./components/UserController/UserController";
 import {DbEdit} from "./components/DbEdit/DbEdit";
 import {PasswordEdit} from "./components/ProfileEdit/PasswordEdit";
 import {UserCreate} from "./components/UserCreate/UserCreate";
+import {UserEdit} from "./components/UserEdit/UserEdit";
+import {RoPage} from "./components/RO-form/RoPage";
 
 function App(props) {
   const {isAuthorized, location} = props;
@@ -28,7 +29,7 @@ function App(props) {
       <Header isAuthorized={isAuthorized}/>
       <Switch location={location}>
         <NonAuthorizedRoute exact={true} path={'/login'} component={Auth} isAuthorized={isAuthorized}/>
-        <AuthorizedRoute path={Routes.Ro} component={RO} isAuthorized={isAuthorized} withNavigation/>
+        <AuthorizedRoute path={Routes.Ro} component={RoPage} isAuthorized={isAuthorized} withNavigation/>
         <AuthorizedRoute path={Routes.RoBuilder} component={RoBuilder} isAuthorized={isAuthorized} withNavigation/>
         <AuthorizedRoute path={Routes.KpBuilder} component={KP} isAuthorized={isAuthorized} withNavigation/>
         <AuthorizedRoute path={Routes.Users} component={UserController} isAuthorized={isAuthorized} withNavigation/>
@@ -36,6 +37,7 @@ function App(props) {
         <AuthorizedRoute path={Routes.db} component={DbEdit} isAuthorized={isAuthorized} withNavigation/>
         <AuthorizedRoute path={Routes.ProfileEdit} component={PasswordEdit} isAuthorized={isAuthorized} withNavigation/>
         <AuthorizedRoute path={Routes.UserCreate} component={UserCreate} isAuthorized={isAuthorized} withNavigation/>
+        <AuthorizedRoute path={Routes.UserEdit} component={UserEdit} isAuthorized={isAuthorized} withNavigation/>
         <Redirect to={Routes.Main}/>
       </Switch>
     </div>

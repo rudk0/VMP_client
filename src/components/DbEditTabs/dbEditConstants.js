@@ -11,10 +11,9 @@ import {usersActions} from "../../redux/Users/userSlice";
 const btnCN = cn('btn');
 
 export const editCityTableHeaders = [
-  {Header: "Город", accessor: "city"},
   {
-    Header: 'Изменение', accessor: 'ids',
-    Cell: (props) => (<TextInput onFocusOut={(e) => DbApi.changeCity(props.row.original.id, e.target.value)
+    Header: 'Город', accessor: 'ids',
+    Cell: (props) => (<TextInput defaultValue={props.row.original.city} onFocusOut={(e) => DbApi.changeCity(props.row.original.id, e.target.value)
   .then((data) => store.dispatch(aoActions.getCities()))}/>)
   },
   {
@@ -27,10 +26,9 @@ export const editCityTableHeaders = [
 
 ]
 export const editFormatsTableHeaders = [
-  {Header: "Формат", accessor: "format"},
   {
-    Header: 'Изменение', accessor: 'ids',
-    Cell: (props) => (<TextInput onFocusOut={(e) => DbApi.changeFormat(props.row.original.id, e.target.value)
+    Header: 'Формат', accessor: 'ids',
+    Cell: (props) => (<TextInput defaultValue={props.row.original.format} onFocusOut={(e) => DbApi.changeFormat(props.row.original.id, e.target.value)
       .then((data) => store.dispatch(aoActions.getFormats()))}/>)
   },
   {
@@ -43,10 +41,9 @@ export const editFormatsTableHeaders = [
   }
 ]
 export const editTypesTableHeaders = [
-  {Header: "Тип", accessor: "type"},
   {
-    Header: 'Изменение', accessor: 'ids',
-    Cell: (props) => (<TextInput onFocusOut={(e) => DbApi.changeType(props.row.original.id, e.target.value)
+    Header: 'Тип', accessor: 'ids',
+    Cell: (props) => (<TextInput defaultValue={props.row.original.type} onFocusOut={(e) => DbApi.changeType(props.row.original.id, e.target.value)
       .then((data) => store.dispatch(aoActions.getTypes()))}/>)
   },
   {
@@ -54,14 +51,13 @@ export const editTypesTableHeaders = [
     Cell: ({value}) => (<button className={btnCN('delete')} onClick={()=>{
       if (window.confirm("Вы уверены, что хотите удалить?")){
         DbApi.deleteTypes(value).then((data) => store.dispatch(aoActions.getTypes()))
-      }}}>Удалить</button>)
+      }}}>Удалить {value}</button>)
   }
 ]
 export const editSegmentsTableHeaders = [
-  {Header: "Сегмент", accessor: "segment"},
   {
-    Header: 'Изменение', accessor: 'ids',
-    Cell: (props) => (<TextInput onFocusOut={(e) => DbApi.changeSegment(props.row.original.id, e.target.value)
+    Header: 'Сегмент', accessor: 'ids',
+    Cell: (props) => (<TextInput defaultValue={props.row.original.segment} onFocusOut={(e) => DbApi.changeSegment(props.row.original.id, e.target.value)
       .then((data) => store.dispatch(aoActions.getSegments()))}/>)
   },
   {
@@ -73,10 +69,9 @@ export const editSegmentsTableHeaders = [
   }
 ]
 export const editSignificanceTableHeaders = [
-  {Header: "Значимость", accessor: "significance"},
   {
-    Header: 'Изменение', accessor: 'ids',
-    Cell: (props) => (<TextInput onFocusOut={(e) => DbApi.changeSignificance(props.row.original.id, e.target.value)
+    Header: 'Значимость', accessor: 'ids',
+    Cell: (props) => (<TextInput defaultValue={props.row.original.significance} onFocusOut={(e) => DbApi.changeSignificance(props.row.original.id, e.target.value)
       .then((data) => store.dispatch(aoActions.getSignificance()))}/>)
   },
   {
