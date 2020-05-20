@@ -54,10 +54,10 @@ export const editTypesTableHeaders = [
       }}}>Удалить {value}</button>)
   }
 ]
+
 export const editSegmentsTableHeaders = [
   {
-    Header: 'Сегмент', accessor: 'ids',
-    Cell: (props) => (<TextInput defaultValue={props.row.original.segment} onFocusOut={(e) => DbApi.changeSegment(props.row.original.id, e.target.value)
+    Header: 'Сегмент', accessor: 'ids',  Cell: (props) => (<TextInput defaultValue={props.row.original.segment} onFocusOut={(e) => DbApi.changeSegment(props.row.original.id, e.target.value)
       .then((data) => store.dispatch(aoActions.getSegments()))}/>)
   },
   {

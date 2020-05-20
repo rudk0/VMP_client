@@ -14,5 +14,8 @@ export const UsersApi = {
   },
   createUser: (user) => {
     return axios.post(`${API_URL}api/auth/signup`, user);
-  }
+  },
+  editUser: async (user) =>{
+  return axios.put(API_URL + 'updateUser/'+ user.id, user);
+},
 }
