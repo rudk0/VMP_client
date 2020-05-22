@@ -4,12 +4,18 @@ import './RO.scss';
 import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {aoActions} from "../../redux/ao/aoSlice";
-import {aoCitySelector, aoFormatsSelector, aoSegmentSelector, aoTypesSelector} from "../../redux/ao/aoSelectors";
+import {
+  aoCitySelector,
+  aoFormatsSelector,
+  aoSegmentSelector,
+  aoSignificanceSelector,
+  aoTypesSelector
+} from "../../redux/ao/aoSelectors";
 import {Sel as Select} from '../common/Select/Select'
 import {
-  floorSelect,
+  floorSelect, neighborsSelect,
   offerSelect,
-  pocketSelect,
+  pocketSelect, possibilitySelect,
   reservedSelect,
   RoInitialState,
   tableAOHeader
@@ -43,7 +49,7 @@ export const RO = props => {
     dispatch(aoActions.getTypes());
     dispatch(aoActions.getCities());
     dispatch(aoActions.getFormats());
-
+    dispatch(aoActions.getSignificance());
   }, [dispatch]);
   useEffect(()=>{
     window.scrollTo(0,document.body.scrollHeight);
@@ -59,6 +65,9 @@ export const RO = props => {
   })]
   const segments =[ {value: '', label: 'Все'}, ...useSelector(aoSegmentSelector).map(item => {
     return {value: item.id, label: item.segment}
+  })]
+  const significance =[ {value: '', label: 'Все'}, ...useSelector(aoSignificanceSelector).map(item => {
+    return {value: item.id, label: item.significance}
   })]
   const handleInputChange = (event) => {
     const target = event.target;
@@ -105,6 +114,16 @@ export const RO = props => {
                     options={floorSelect}/>
             <Select onChange={(e) => handleInputChange(e)} label={"Наличие карманов:"} name="pockets" value={pocketSelect[0]}
                     options={pocketSelect}/>
+          </div>
+          <div className={roCN('line')}>
+            <Select onChange={(e) => handleInputChange(e)} label={"Наличие соседей:"} name="neighbors" value={neighborsSelect[0]}
+                    options={neighborsSelect}/>
+            <Select onChange={(e) => handleInputChange(e)} label={"Социальная значимость:"} name="socSign" value={significance[0]}
+                    options={significance}/>
+          </div>
+          <div className={roCN('line')}>
+            <Select onChange={(e) => handleInputChange(e)} label={"Возможность размещения:"} name="placementPossibility" value={possibilitySelect[0]}
+                    options={possibilitySelect}/>
           </div>
         </div>
         <Link to={"/main"}>
