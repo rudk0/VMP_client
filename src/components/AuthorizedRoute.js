@@ -11,8 +11,7 @@ export const AuthorizedRoute = props => {
                 if (isAuthorized) {
                     return (
                         <>
-
-                            <Component {...routeProps} />
+                            <Component {...routeProps} {...rest} />
                         </>
                     );
                 }

@@ -24,8 +24,7 @@ export const RO = props => {
   const [roState, setRoState] = useState({filters: RoInitialState, data: [], requested: false});
   const {changeState, isKp} = props;
   const handleRoForm = (e) => {
-    e.preventDefault();
-    console.log(roState)
+    e && e.preventDefault();
     AOApi.getList(roState.filters)
       .then((data) => {
         notify("List formed successfully");
@@ -113,7 +112,7 @@ export const RO = props => {
         </Link>
         <Button type="submit" variant="submit">Сформировать список</Button>
       </form>
-      {roState.requested && <AoTable columns={tableAOHeader()} data={roState.data} checkbox={isKp} changeState={typeof changeState === "function" && (e => changeState(e))}></AoTable>}
+      {roState.requested && <AoTable columns={tableAOHeader(handleRoForm)} data={roState.data} checkbox={isKp} changeState={typeof changeState === "function" && (e => changeState(e))}></AoTable>}
 
     </>
 

@@ -38,6 +38,8 @@ function App(props) {
         <AuthorizedRoute path={Routes.ProfileEdit} component={PasswordEdit} isAuthorized={isAuthorized} withNavigation/>
         <AuthorizedRoute path={Routes.UserCreate} component={UserCreate} isAuthorized={isAuthorized} withNavigation/>
         <AuthorizedRoute path={Routes.UserEdit} component={UserEdit} isAuthorized={isAuthorized} withNavigation/>
+        <AuthorizedRoute path={Routes.ROEdit} component={RoBuilder} isEdit={true} isAuthorized={isAuthorized} withNavigation/>
+
         <Redirect to={Routes.Main}/>
       </Switch>
     </div>

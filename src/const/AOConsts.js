@@ -1,5 +1,13 @@
-
 import React from "react";
+import {DbApi} from "../api/dbEditAPI";
+import {store} from "../redux/store";
+import {aoActions} from "../redux/ao/aoSlice";
+import {push} from 'connected-react-router';
+import {cn} from "@bem-react/classname";
+import {AOApi} from "../api/AOAPI";
+import {Link} from "react-router-dom";
+const btnCN = cn('btn');
+
 export const offerSelect = [
   {value: '', label: 'Все'},
   {
@@ -140,21 +148,54 @@ export const ROBuilderInitialState = {
   subsegment3_id: null
 }
 
-export const RoInitialState = {
-}
-export const tableAOHeader = () => {
+export const RoInitialState = {}
+export const tableAOHeader = update => {
   return [{Header: "Город", accessor: "city_id.city"}, {Header: "Объект", accessor: "name"}, {
     Header: "Объект фактический адрес",
     accessor: "address"
   }, {Header: "Формат размещения", accessor: "placing_format_id.format"}, {
     Header: "Этаж",
     accessor: "floor"
-  },  {Header: "Соседи", accessor: "neighbors", Cell: (props) =>(<div>{props.row.original.neighbors? "Есть" : "Нет" }</div>)}, {Header: "Кол-во карманов", accessor: "pockets"}, {
+  }, {
+    Header: "Соседи",
+    accessor: "neighbors",
+    Cell: (props) => (<div>{props.row.original.neighbors ? "Есть" : "Нет"}</div>)
+  }, {Header: "Кол-во карманов", accessor: "pockets"}, {
     Header: "Цена, руб",
     accessor: "price"
-  },{Header: "Возможность размещения", accessor: "possibility_of_placement", Cell: (props) =>(<div>{props.row.original.possibility_of_placement? "Есть" : "Нет" }</div>)},
+  }, {
+    Header: "Возможность размещения",
+    accessor: "possibility_of_placement",
+    Cell: (props) => (<div>{props.row.original.possibility_of_placement ? "Есть" : "Нет"}</div>)
+  },
     {
-    Header: "Описание места",
-    accessor: "place_description"
-  }]
+      Header: "Описание места",
+      accessor: "place_description"
+    },
+    {
+      Header: "Фото",
+      accessor: "photo",
+      Cell: props => {
+        console.log(props)
+        return (
+          <img height={100} src={'data:image/jpeg;base64,' + (props.row.original.photo)}/>)
+      }
+    },
+    {
+      Header: "Удалить",
+      accessor: "id",
+      Cell: ({value}) =>  (<button className={btnCN('delete')} onClick={()=>{
+        if (window.confirm("Вы уверены, что хотите удалить?")){
+          AOApi.deleteAO(value).then((data) => update())
+        }}}>Удалить</button>)
+    },
+    {
+      Header: "Изменить",
+      accessor: "kek",
+      Cell: ({row} )=> (
+        <Link to={('edit/ro'+ row.original.id)}>Change</Link>
+        //<button onClick={e=>push('edit/'+ row.original.id)}>Изменить</button>
+  )
+    }
+  ]
 }
