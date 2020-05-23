@@ -169,8 +169,33 @@ export const tableAOHeader = update => {
     Cell: (props) => (<div>{props.row.original.possibility_of_placement ? "Есть" : "Нет"}</div>)
   },
     {
+      Header: "Сегмент",
+      accessor: "segment_id.segment"
+    },
+    {
+      Header: "Тип ЛПУ",
+      accessor: "mi_type_id.type"
+    },
+    {
+      Header: "Социальная значимость",
+      accessor: "mi_id.significance"
+    },
+    {
+      Header: "Бронь",
+      accessor: "reservation_status",
+      Cell: (props) => (<div>{props.row.original.reservation_status ? "Есть" : "Нет"}</div>)
+    },
+    {
+      Header: "Договор",
+      accessor: "contract"
+    },
+    {
       Header: "Описание места",
       accessor: "place_description"
+    },
+    {
+      Header: "Коментарии",
+      accessor: "comments"
     },
     {
       Header: "Фото",
@@ -193,7 +218,7 @@ export const tableAOHeader = update => {
       Header: "Изменить",
       accessor: "kek",
       Cell: ({row} )=> (
-        <Link to={('edit/ro'+ row.original.id)}>Change</Link>
+        <Link to={('edit/ro'+ row.original.id)}>Изменить</Link>
         //<button onClick={e=>push('edit/'+ row.original.id)}>Изменить</button>
   )
     }
