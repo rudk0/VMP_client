@@ -18,5 +18,19 @@ export const ROApi = {
   ,
   getRo: (id) => {
     return axios.get(`${API_URL}ao/${id}`);
+  },
+  putRo: (Ro, id ) => {
+    return axios.put(`${API_URL}ao/${id}`, Ro)
+      .then((res) => {
+        let bodyFormData = new FormData();
+        bodyFormData.append('file', Ro.photo)
+        axios({
+          method: 'post',
+          url: `${API_URL}ao_photo/${res.data}`,
+          data: bodyFormData,
+          headers: {'Content-Type': 'multipart/form-data'}
+        })
+      });
   }
+  
 }

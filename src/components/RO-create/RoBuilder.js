@@ -33,6 +33,10 @@ export const RoBuilder = props => {
 
   const handleRoForm = (e) => {
     e.preventDefault();
+    props.isEdit ? ROApi.putRo(roState, id).then((res)=>{
+        notify("Object medicated successfully");
+
+      }) :
     ROApi.postRo(roState)
       .then((data) => {
         notify("Object created successfully");
@@ -93,7 +97,7 @@ export const RoBuilder = props => {
   }
   console.log(roState)
   return (roState.city_id>0 && <div className={robuildCN('container')}>
-    <h2 className={robuildCN('label')}>Создание РО</h2>
+    <h2 className={robuildCN('label')}>{props.isEdit? 'Изменение ' : 'Создание '}РО</h2>
     <form onSubmit={(e) => {
       handleRoForm(e);
     }}>
