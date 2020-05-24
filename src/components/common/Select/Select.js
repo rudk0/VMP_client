@@ -6,6 +6,7 @@ import Select from 'react-select';
 const selectCN = cn('select');
 export const Sel = props => {
   const {label, options, onChange, name, value} = props;
+  const defaultValue = options.find((el) => el.value === value);
   const customStyles = {
     menu: (provided, state) => ({
       ...provided,
@@ -16,7 +17,7 @@ export const Sel = props => {
       <Select name={name} onChange={(e) => {
         e.name = name;
         typeof onChange === "function" && onChange(e)
-      }} styles={customStyles} options={options} defaultValue={value}
+      }} styles={customStyles} options={options} defaultValue={defaultValue}
               className={selectCN('item')}/>
     </div>
   );
