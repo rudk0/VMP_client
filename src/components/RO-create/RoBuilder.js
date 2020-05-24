@@ -51,10 +51,9 @@ export const RoBuilder = props => {
   }, [dispatch]);
   useEffect(() => {
     if (props.isEdit) {
-      AOApi.getList()
+      ROApi.getRo(id)
         .then((res) => {
-          const kek = res.data[0];
-          console.log(kek);
+          const kek = res.data;
           setRoState({...kek})
         })
     }
@@ -93,7 +92,7 @@ export const RoBuilder = props => {
     });
   }
   console.log(roState)
-  return (<div className={robuildCN('container')}>
+  return (roState.city_id>0 && <div className={robuildCN('container')}>
     <h2 className={robuildCN('label')}>Создание РО</h2>
     <form onSubmit={(e) => {
       handleRoForm(e);
