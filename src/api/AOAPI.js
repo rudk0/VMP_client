@@ -29,16 +29,7 @@ export const AOApi = {
   getList(filters) {
     const esc = encodeURIComponent;
     const query = filters ?  Object.keys(filters).map(k => esc(camelize(k) ) + '=' + filters[k]).join('&') : '';
-    return axios({method: "get", url: API_URL + 'ao?'  + query}).then((res)=>{
-      axios({method: "get", url: `${API_URL}load_photo/${24}`, responseType: "blob"}).then((res)=> {
-        let a = document.createElement('img')
-        console.log(res.data);
-        a.src=  URL.createObjectURL(res.data);
-      //  document.body.appendChild(a);
-//        console.log(res.headers)
-      })
-      return res;
-    });
+    return axios({method: "get", url: API_URL + 'ao?'  + query});
   }
   
 }
