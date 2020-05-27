@@ -197,15 +197,15 @@ export const tableAOHeader = update => {
       Header: "Коментарии",
       accessor: "comments"
     },
-    {
-      Header: "Фото",
-      accessor: "photo",
-      Cell: props => {
-        console.log(props)
-        return (
-          <img height={100} src={'data:image/jpeg;base64,' + (props.row.original.photo)}/>)
-      }
-    },
+    // {
+    //   Header: "Фото",
+    //   accessor: "photo",
+    //   Cell: props => {
+    //     console.log(props)
+    //     return (
+    //       <img height={100} src={'data:image/jpeg;base64,' + (props.row.original.photo)}/>)
+    //   }
+    // },
     {
       Header: "Удалить",
       accessor: "id",

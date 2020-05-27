@@ -174,7 +174,7 @@ export const RoBuilder = props => {
                      label="с"/>
           <TextInput type="date" onChange={(e) => handleInputChange(e)} name="date_to" value={roState.date_to}
                      label="по"/>
-          <TextInput onChange={(e) => handleInputChange(e)} type="text" name="client" label="Клиент:" required={true}/>
+          <TextInput onChange={(e) => handleInputChange(e)} type="text" name="client" label="Клиент:" required={true} value={roState.client}/>
         </div>
         <div className={robuildCN('line')}>
           <input onChange={e => handleInputChange(e)} type="file" name="file" id="file"
