@@ -6,6 +6,7 @@ import {push} from 'connected-react-router';
 import {cn} from "@bem-react/classname";
 import {AOApi} from "../api/AOAPI";
 import {Link} from "react-router-dom";
+
 const btnCN = cn('btn');
 
 export const offerSelect = [
@@ -123,25 +124,25 @@ export const possibilitySelect = [
 ]
 export const ROBuilderInitialState = {
   address: '',
-  city_id: 1,
+  city_id: null,
   client: '',
   comments: "",
   contract: "",
   date_from: "",
   date_to: "",
-  floor: 1,
-  mi_id: 1,
-  mi_type_id: 1,
+  floor: null,
+  mi_id: null,
+  mi_type_id: null,
   name: "",
   neighbors: true,
   photo: "",
   place_description: "",
-  placing_format_id: 0,
-  pockets: 0,
+  placing_format_id: null,
+  pockets: null,
   possibility_of_placement: true,
-  price: 0,
+  price: null,
   reservation_status: true,
-  segment_id: 0,
+  segment_id: null,
   specialist_description: "",
   subsegment1_id: null,
   subsegment2_id: null,
@@ -149,8 +150,10 @@ export const ROBuilderInitialState = {
 }
 
 export const RoInitialState = {}
-export const tableAOHeader = update => {
-  return [{Header: "Город", accessor: "city_id.city"}, {Header: "Объект", accessor: "name"}, {
+
+export const tableAOHeader = (update, notKp) => {
+  console.log(notKp)
+  const arr = [{Header: "Город", accessor: "city_id.city"}, {Header: "Объект", accessor: "name"}, {
     Header: "Объект фактический адрес",
     accessor: "address"
   }, {Header: "Формат размещения", accessor: "placing_format_id.format"}, {
@@ -196,7 +199,7 @@ export const tableAOHeader = update => {
     {
       Header: "Коментарии",
       accessor: "comments"
-    },
+    }
     // {
     //   Header: "Фото",
     //   accessor: "photo",
@@ -206,21 +209,26 @@ export const tableAOHeader = update => {
     //       <img height={100} src={'data:image/jpeg;base64,' + (props.row.original.photo)}/>)
     //   }
     // },
-    {
+
+  ]
+  notKp && arr.push({
       Header: "Удалить",
       accessor: "id",
-      Cell: ({value}) =>  (<button className={btnCN('delete')} onClick={()=>{
-        if (window.confirm("Вы уверены, что хотите удалить?")){
+      Cell: ({value}) => (<button className={btnCN('delete')} onClick={() => {
+        if (window.confirm("Вы уверены, что хотите удалить?")) {
           AOApi.deleteAO(value).then((data) => update())
-        }}}>Удалить</button>)
+        }
+      }}>Удалить</button>)
     },
     {
       Header: "Изменить",
       accessor: "kek",
-      Cell: ({row} )=> (
-        <Link to={('edit/ro'+ row.original.id)}>Изменить</Link>
+      Cell: ({row}) => (
+        <Link to={('edit/ro' + row.original.id)}>Изменить</Link>
         //<button onClick={e=>push('edit/'+ row.original.id)}>Изменить</button>
-  )
-    }
-  ]
+      )
+    })
+  return arr
 }
+
+

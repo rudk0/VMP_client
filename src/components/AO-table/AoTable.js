@@ -56,6 +56,8 @@ export const AoTable = ({columns, data, changeState, checkbox}) => {
     }
   )
   return (
+    <div className={tableCn('wrapper')}>
+
     <table {...getTableProps()} className={tableCn('container')}>
       <thead>
       {headerGroups.map(headerGroup => (
@@ -79,6 +81,8 @@ export const AoTable = ({columns, data, changeState, checkbox}) => {
       })}
       </tbody>
     </table>
+    </div>
+
   )
 
 }

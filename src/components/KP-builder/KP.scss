@@ -12,17 +12,24 @@
     background: $beige;
     padding: 16px;
     box-shadow: $dark-grey;
-    width: 1400px;
+    width: 1500px;
   }
   &-line{
-    display: flex;
+    //display: flex;
     justify-content: space-between;
     margin: 20px 5px;
+    padding: 10px;
     //border: solid 1px red;
   }
-  &-list-container {
+  &-line1 {
+  max-width: 200px;
     display: flex;
-    flex-flow: row wrap;
+    padding: 20px;
+    justify-content: space-between;
+   }
+  &-list-container {
+    //display: flex;
+    //flex-flow: row wrap;
     justify-content: space-between;
   }
 }

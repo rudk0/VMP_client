@@ -1,9 +1,15 @@
 @import "src/colors";
 
 .table {
+  &-wrapper{
+    width: 1400px;
+    overflow-x: scroll;
+    margin: auto;
+  }
   &-container {
     background: $white2;
-    margin: 20px auto ;
+    margin: auto;
+
   }
 }
 th {

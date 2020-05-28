@@ -131,7 +131,8 @@ export const RO = props => {
         </Link>
         <Button type="submit" variant="submit">Сформировать список</Button>
       </form>
-      {roState.requested && <AoTable columns={tableAOHeader(handleRoForm)} data={roState.data} checkbox={isKp} changeState={typeof changeState === "function" && (e => changeState(e))}></AoTable>}
+
+      {roState.requested && <AoTable columns={tableAOHeader(handleRoForm, !isKp)} data={roState.data} checkbox={isKp} changeState={typeof changeState === "function" && (e => changeState(e))}></AoTable>}
 
     </>
 
