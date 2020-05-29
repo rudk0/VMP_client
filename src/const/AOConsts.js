@@ -10,7 +10,6 @@ import {Link} from "react-router-dom";
 const btnCN = cn('btn');
 
 export const offerSelect = [
-  {value: '', label: 'Все'},
   {
     value: true, label: 'Да',
   },
@@ -19,7 +18,6 @@ export const offerSelect = [
   }
 ]
 export const reservedSelect = [
-  {value: '', label: 'Все'},
   {
     value: true, label: 'Зарезервирован'
   },
@@ -29,7 +27,6 @@ export const reservedSelect = [
 
 ]
 export const floorSelect = [
-  {value: '', label: 'Все'},
   {
     value: 1, label: '1 этаж'
   },
@@ -93,7 +90,6 @@ export const floorSelect = [
 
 ]
 export const pocketSelect = [
-  {value: '', label: 'Все'},
   {
     value: 0, label: 'Нет карманов'
   },
@@ -105,7 +101,6 @@ export const pocketSelect = [
   }
 ]
 export const neighborsSelect = [
-  {value: '', label: 'Все'},
   {
     value: true, label: 'Да',
   },
@@ -114,7 +109,6 @@ export const neighborsSelect = [
   }
 ]
 export const possibilitySelect = [
-  {value: '', label: 'Все'},
   {
     value: true, label: 'Да',
   },
@@ -199,16 +193,16 @@ export const tableAOHeader = (update, notKp) => {
     {
       Header: "Коментарии",
       accessor: "comments"
-    }
-    // {
-    //   Header: "Фото",
-    //   accessor: "photo",
-    //   Cell: props => {
-    //     console.log(props)
-    //     return (
-    //       <img height={100} src={'data:image/jpeg;base64,' + (props.row.original.photo)}/>)
-    //   }
-    // },
+    },
+    {
+      Header: "Фото",
+      accessor: "photo",
+      Cell: props => {
+        console.log(props)
+        return (
+          <img height={100} src={'data:image/jpeg;base64,' + (props.row.original.photo)}/>)
+      }
+    },
 
   ]
   notKp && arr.push({

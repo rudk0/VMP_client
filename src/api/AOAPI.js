@@ -2,10 +2,7 @@ import axios from 'axios';
 
 import {API_URL} from './baseAPI'
 import {camelize} from "../helpers/helperOtPoliny";
-import { Base64 } from 'js-base64';
-const hexToBase64 = (str) =>  {
-  return btoa(String.fromCharCode.apply(null, str.replace(/\r|\n/g, "").replace(/([\da-fA-F]{2}) ?/g, "0x$1 ").replace(/ +$/, "").split(" ")));
-}
+
 export const AOApi = {
 
   getTypes: async () => {

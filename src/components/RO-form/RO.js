@@ -54,13 +54,13 @@ export const RO = props => {
   useEffect(()=>{
     window.scrollTo(0,document.body.scrollHeight);
   }, [roState.data]);
-  const types =[{value: '', label: 'Все'}, ... useSelector(aoTypesSelector).map(item => {
+  const types =[{value: '', label: 'Все'}, ...useSelector(aoTypesSelector).map(item => {
     return {value: item.id, label: item.type}
   })];
   const cities = [{value: '', label: 'Все'}, ...useSelector(aoCitySelector).map(item => {
     return {value: item.id, label: item.city}
   })]
-  const formats =[ {value: '', label: 'Все'}, ... useSelector(aoFormatsSelector).map(item => {
+  const formats =[ {value: '', label: 'Все'}, ...useSelector(aoFormatsSelector).map(item => {
     return {value: item.id, label: item.format}
   })]
   const segments =[ {value: '', label: 'Все'}, ...useSelector(aoSegmentSelector).map(item => {
@@ -96,34 +96,34 @@ export const RO = props => {
       }}>
         <div className={roCN('list-container')}>
           <div className={roCN('line')}>
-          <Select onChange={(e) => handleInputChange(e)} label={"Тип объекта:"} name="mi_type_id" options={types} value={types[0]}/>
-          <Select onChange={(e) => handleInputChange(e)} label={"Город:"} name="city_id" options={cities} value={cities[0]}/>
+          <Select onChange={(e) => handleInputChange(e)} label={"Тип объекта:"} name="mi_type_id" options={types} value={''}/>
+          <Select onChange={(e) => handleInputChange(e)} label={"Город:"} name="city_id" options={cities} value={''}/>
           </div>
           <div className={roCN('line')}>
-          <Select onChange={(e) => handleInputChange(e)} label={"Статус объекта:"} name="reservation_status" value={reservedSelect[0]}
-                  options={reservedSelect}/>
-          <Select onChange={(e) => handleInputChange(e)} label={"Сегмент:"} name="segment_id" options={segments} value={segments[0]}/>
+          <Select onChange={(e) => handleInputChange(e)} label={"Статус объекта:"} name="reservation_status" value={''}
+                  options={[{value: '', label: 'Все'}, ...reservedSelect]}/>
+          <Select onChange={(e) => handleInputChange(e)} label={"Сегмент:"} name="segment_id" options={segments} value={''}/>
           </div>
           <div className={roCN('line')}>
-          <Select onChange={(e) => handleInputChange(e)} label={"Формат размещения:"} name="format_id" value={formats[0]}
+          <Select onChange={(e) => handleInputChange(e)} label={"Формат размещения:"} name="format_id" value={''}
                   options={formats}/>
-          <Select onChange={(e) => handleInputChange(e)} label={"Договор:"} name="contract" options={offerSelect} value={offerSelect[0]}/>
+          <Select onChange={(e) => handleInputChange(e)} label={"Договор:"} name="contract" options={[{value: '', label: 'Все'}, ...offerSelect]} value={''}/>
           </div>
           <div className={roCN('line')}>
-            <Select onChange={(e) => handleInputChange(e)} label={"Этаж:"} name="floor" value={floorSelect[0]}
-                    options={floorSelect}/>
-            <Select onChange={(e) => handleInputChange(e)} label={"Наличие карманов:"} name="pockets" value={pocketSelect[0]}
-                    options={pocketSelect}/>
+            <Select onChange={(e) => handleInputChange(e)} label={"Этаж:"} name="floor" value={''}
+                    options={[{value: '', label: 'Все'}, ...floorSelect]}/>
+            <Select onChange={(e) => handleInputChange(e)} label={"Наличие карманов:"} name="pockets" value={''}
+                    options={[{value: '', label: 'Все'}, ...pocketSelect]}/>
           </div>
           <div className={roCN('line')}>
-            <Select onChange={(e) => handleInputChange(e)} label={"Наличие соседей:"} name="neighbors" value={neighborsSelect[0]}
-                    options={neighborsSelect}/>
-            <Select onChange={(e) => handleInputChange(e)} label={"Социальная значимость:"} name="socSign" value={significance[0]}
+            <Select onChange={(e) => handleInputChange(e)} label={"Наличие соседей:"} name="neighbors" value={''}
+                    options={[{value: '', label: 'Все'}, ...neighborsSelect]}/>
+            <Select onChange={(e) => handleInputChange(e)} label={"Социальная значимость:"} name="socSign" value={''}
                     options={significance}/>
           </div>
           <div className={roCN('line')}>
-            <Select onChange={(e) => handleInputChange(e)} label={"Возможность размещения:"} name="placementPossibility" value={possibilitySelect[0]}
-                    options={possibilitySelect}/>
+            <Select onChange={(e) => handleInputChange(e)} label={"Возможность размещения:"} name="placementPossibility" value={''}
+                    options={[{value: '', label: 'Все'}, ...possibilitySelect]}/>
           </div>
         </div>
         <Link to={"/main"}>
@@ -132,7 +132,7 @@ export const RO = props => {
         <Button type="submit" variant="submit">Сформировать список</Button>
       </form>
 
-      {roState.requested && <AoTable columns={tableAOHeader(handleRoForm, !isKp)} data={roState.data} checkbox={isKp} changeState={typeof changeState === "function" && (e => changeState(e))}></AoTable>}
+      {roState.requested && <AoTable columns={tableAOHeader(handleRoForm, !isKp)} data={roState.data} checkbox={isKp} changeState={typeof changeState === "function" && (e => changeState(e))}/>}
 
     </>
 

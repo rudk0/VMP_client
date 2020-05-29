@@ -1,6 +1,10 @@
 @import "../../colors.scss";
 
 .kp {
+  &-values{
+    text-align: left;
+    margin-left: 20px;
+  }
   &-label{
     color: $grey2;
     margin-bottom:30px;

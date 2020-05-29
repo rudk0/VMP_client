@@ -28,22 +28,21 @@ import {AOApi} from "../../api/AOAPI";
 const robuildCN = cn('robuild');
 export const RoBuilder = props => {
   const [roState, setRoState] = useState(ROBuilderInitialState);
-  console.log(props.isEdit);
   const id = props.match.params && props.match.params.id
 
   const handleRoForm = (e) => {
     e.preventDefault();
-    props.isEdit ? ROApi.putRo(roState, id).then((res)=>{
+    props.isEdit ? ROApi.putRo(roState, id).then((res) => {
         notify("Object medicated successfully");
 
       }) :
-    ROApi.postRo(roState)
-      .then((data) => {
-        notify("Object created successfully");
-        setRoState(ROBuilderInitialState);
-      }).catch((err) => {
-      error("Something went wrong" + err);
-    })
+      ROApi.postRo(roState)
+        .then((data) => {
+          notify("Object created successfully");
+          setRoState(ROBuilderInitialState);
+        }).catch((err) => {
+        error("Something went wrong" + err);
+      })
   }
   const dispatch = useDispatch();
   useEffect(() => {
@@ -59,6 +58,10 @@ export const RoBuilder = props => {
         .then((res) => {
           const kek = res.data;
           setRoState({...kek})
+          ROApi.getRoImage(id).then((response) => {
+            const kek = res.data;
+            setRoState({...kek, photo: response})
+          })
         })
     }
   }, [id])
@@ -96,11 +99,12 @@ export const RoBuilder = props => {
     });
   }
   console.log(roState)
-  return (roState.city_id>0 && <div className={robuildCN('container')}>
-    <h2 className={robuildCN('label')}>{props.isEdit? 'Изменение ' : 'Создание '}РО</h2>
+  return ((roState.city_id > 0 || !props.isEdit )&& <div className={robuildCN('container')}>
+    <h2 className={robuildCN('label')}>{props.isEdit ? 'Изменение ' : 'Создание '}РО</h2>
     <form onSubmit={(e) => {
       handleRoForm(e);
     }}>
+      <img  src={'data:image/jpeg;base64,' + roState.photo}/>
       <div className={robuildCN('list-container')}>
         <div className={robuildCN("line")}>
           <Select onChange={(e) => handleInputChange(e)} label={"Город:"} name="city_id" value={roState.city_id}
@@ -116,7 +120,7 @@ export const RoBuilder = props => {
                      label="Название объекта:" required={true}/>
           <TextInput onChange={(e) => handleInputChange(e)} type="text" name="address" value={roState.address}
                      label="Адрес объекта:" required={true}/>
-          <Select onChange={(e) => handleInputChange(e)} label={"Этаж:"} name="floor" value={roState.floor}
+          <Select onChange={(e) => handleInputChange(e)} label="Этаж:" name="floor" value={roState.floor}
                   options={floorSelect}/>
         </div>
         <div className={robuildCN("line")}>
@@ -174,7 +178,8 @@ export const RoBuilder = props => {
                      label="с"/>
           <TextInput type="date" onChange={(e) => handleInputChange(e)} name="date_to" value={roState.date_to}
                      label="по"/>
-          <TextInput onChange={(e) => handleInputChange(e)} type="text" name="client" label="Клиент:" required={true} value={roState.client}/>
+          <TextInput onChange={(e) => handleInputChange(e)} type="text" name="client" label="Клиент:" required={true}
+                     value={roState.client}/>
         </div>
         <div className={robuildCN('line')}>
           <input onChange={e => handleInputChange(e)} type="file" name="file" id="file"
