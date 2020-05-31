@@ -104,7 +104,7 @@ export const RoBuilder = props => {
     <form onSubmit={(e) => {
       handleRoForm(e);
     }}>
-      <img  src={'data:image/jpeg;base64,' + roState.photo}/>
+      {roState.photo &&<img  src={'data:image/jpeg;base64,' + roState.photo}/>}
       <div className={robuildCN('list-container')}>
         <div className={robuildCN("line")}>
           <Select onChange={(e) => handleInputChange(e)} label={"Город:"} name="city_id" value={roState.city_id}
@@ -191,7 +191,7 @@ export const RoBuilder = props => {
       <Link to={"/main"}>
         <Button variant="discard">Отмена</Button>
       </Link>
-      <Button type="submit" variant="submit">Создать объект</Button>
+      <Button type="submit" variant="submit">Сохранить объект</Button>
     </form>
   </div>)
 

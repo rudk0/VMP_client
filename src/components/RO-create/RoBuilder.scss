@@ -18,7 +18,7 @@
   }
   &-label{
     color: $grey2;
-    margin-bottom: 130px;
+    margin-bottom: 80px;
     margin-top: 30px;
   }
   &-list-container{
@@ -43,5 +43,7 @@
     display: inline-block;
     position: absolute;
   }
-
+  img{
+    margin: 20px;
+  }
 }

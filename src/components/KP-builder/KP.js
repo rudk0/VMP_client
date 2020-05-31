@@ -112,9 +112,10 @@ export const KP = () => {
         })}>Выбрать из списка</Button>}
       </div>
       <AoTable columns={EstimateTableHeader(setDataInEstimate)} data={data.estimate}/>
-      {data.placement_fin && (<div className={kpCN('values')}> placement_fin: {data.placement_fin}</div>)}
-      {data.price_fin && (<div className={kpCN('values')}>  price_fin:  {data.price_fin}</div>)}
-      {data.price_vat_fin && (<div className={kpCN('values')}> price_vat_fin: {data.price_vat_fin}</div>)}
+      {data.placement_fin && (<div className={kpCN('values')}> Итого, размещение: {data.placement_fin}</div>)}
+      {data.placement_fin && (<div className={kpCN('values')}> Производство плакатов B1: {data.b1_price}</div>)}
+      {data.price_fin && (<div className={kpCN('values')}>  Общий бюджет размещение + производство, без НДС:  {data.price_fin}</div>)}
+      {data.price_vat_fin && (<div className={kpCN('values')}> Общий бюджет размещение + производство, с учётом НДС: {data.price_vat_fin}</div>)}
       <Link to={"/main"}>
         <Button variant="discard">Отмена</Button>
       </Link>
