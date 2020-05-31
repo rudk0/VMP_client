@@ -29,14 +29,14 @@
     //border: solid 1px red;
   }
   &-line1 {
-  max-width: 200px;
+  max-width: 900px;
     display: flex;
     padding: 20px;
     justify-content: space-between;
+    margin: auto;
    }
   &-list-container {
-    //display: flex;
-    //flex-flow: row wrap;
     justify-content: space-between;
   }
+
 }

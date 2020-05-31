@@ -75,7 +75,7 @@ export const KP = () => {
   )
   return (<div className={kpCN('container')}>
       <h2 className={kpCN('label')}>Создание КП</h2>
-      <div className={kpCN('list-container')}>
+      <div className={kpCN('list-container') }>
         <div className={kpCN('line1')}>
           <TextInput onChange={e => handleInputChange(e)} type="text" name="name"
                      label="Коммерческое предложение:"/>
