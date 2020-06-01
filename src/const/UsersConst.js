@@ -38,7 +38,7 @@ export const usersTableHeader = (cities) => {
     login: e.target.value
   })
 }}/>)
-  }, {Header: "Роль", accessor: "roles.role", Cell: (props)=>(<Select options={options} value={{
+  }, {Header: "Роль", accessor: "roles.role", Cell: (props)=>(<Select options={options} role={{
   value: props.row.original.roles.role,
   label: props.row.original.roles.role
 }} onChange={(e) => {
@@ -59,7 +59,7 @@ export const usersTableHeader = (cities) => {
 
     })
   }}
-  options={cities} value={{value: props.row.original.cities.city, label: props.row.original.cities.city}}
+  options={cities} role={{value: props.row.original.cities.city, label: props.row.original.cities.city}}
 
   />)
   }, {Header: "Новый пароль", accessor: "password", Cell: (props) => (<TextInput onFocusOut={(e) => {

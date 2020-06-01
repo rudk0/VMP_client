@@ -5,8 +5,9 @@ import Select from 'react-select';
 
 const selectCN = cn('select');
 export const Sel = props => {
-  const {label, options, onChange, name, value} = props;
-  const defaultValue = options.find((el) => el.value === value);
+  const {label, options, onChange, name, value, role} = props;
+  let defaultValue = options.find((el) => el.value === value);
+  if(role){ defaultValue = role}
   const customStyles = {
     menu: (provided, state) => ({
       ...provided,

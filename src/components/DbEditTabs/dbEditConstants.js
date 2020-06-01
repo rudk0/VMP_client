@@ -5,8 +5,6 @@ import {DbApi} from "../../api/dbEditAPI";
 import {TextInput} from "../common/TextInput/TextInput";
 import '../common/Button/Button.scss'
 import {cn} from "@bem-react/classname";
-import {UsersApi} from "../../api/UserAPI";
-import {usersActions} from "../../redux/Users/userSlice";
 
 const btnCN = cn('btn');
 
@@ -51,7 +49,7 @@ export const editTypesTableHeaders = [
     Cell: ({value}) => (<button className={btnCN('delete')} onClick={()=>{
       if (window.confirm("Вы уверены, что хотите удалить?")){
         DbApi.deleteTypes(value).then((data) => store.dispatch(aoActions.getTypes()))
-      }}}>Удалить {value}</button>)
+      }}}>Удалить</button>)
   }
 ]
 
