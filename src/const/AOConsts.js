@@ -180,7 +180,7 @@ export const tableAOHeader = (update, notKp) => {
     {
       Header: "Бронь",
       accessor: "reservation_status",
-      Cell: (props) => (<div>{props.row.original.reservation_status ? "Есть" : "Нет"}</div>)
+      Cell: (props) => (<div>{props.row.original.reservation_status ? "Занято" : "Свободно"}</div>)
     },
     {
       Header: "Договор",
